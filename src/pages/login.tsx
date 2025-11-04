@@ -77,7 +77,7 @@ export const LoginScreen = () => {
           {/* Submit Button */}
           <button
             onClick={() => {
-              if (isFormValid) navigate("/choose-image");
+              if (isFormValid) navigate("/home-screen");
             }}
             className={`w-full py-3 rounded-full font-bold text-base sm:text-lg md:text-xl transition-all duration-300 active:scale-95 shadow-md ${
               isFormValid

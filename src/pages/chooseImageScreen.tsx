@@ -1,94 +1,33 @@
 import { ChevronRight, Camera, Image } from "lucide-react";
 import LoggingImage from "../assets/images/Logging.jpg";
 
-
-
 export const ChooseImageScreen = () => {
-
   return (
     <div
       dir="rtl"
       className="bg-white h-[100dvh] flex flex-col font-sans overflow-hidden fixed inset-0"
     >
       {/* Header: Back + Title */}
-      <header className="flex items-center justify-between px-4 pt-3 pb-2">
-        <button className="flex items-center gap-1 text-lg font-semibold text-gray-900">
-          <ChevronRight className="w-5 h-5 rotate-180" />
-          بازگشت
-        </button>
-        <div className="flex-1 text-center pr-8">
-          <span className="text-sm text-red-500 font-medium">فرستادن عکس</span>
+      <header className="flex items-center justify-end px-4 pt-3 pb-2">
+        {/* <div className="flex-1 text-center pr-8">
           <ChevronRight className="inline w-4 h-4 text-red-500 -rotate-90 mx-1" />
-        </div>
+          <span className="text-sm text-red-500 font-medium">فرستادن عکس</span>
+        </div> */}
+        <button className="flex items-center text-black bg-white gap-1 text-lg font-semibold ">
+          بازگشت
+          <ChevronRight className="w-5 h-5 rotate-180" />
+        </button>
       </header>
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-center px-6 space-y-8">
         {/* Barber Illustration (SVG) */}
-        <div className="w-64 h-64 border-4 border-purple-600 rounded-2xl p-6 bg-white shadow-lg">
-          <svg
-            viewBox="0 0 200 200"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-full"
-          >
-            {/* Barber */}
-            <g transform="translate(60, 20)">
-              <path
-                d="M40 60c0-15-12-27-27-27s-27 12-27 27v30h54V60z"
-                fill="#fff"
-                stroke="#000"
-                strokeWidth="2"
-              />
-              <circle cx="13" cy="50" r="8" fill="#000" />
-              <path
-                d="M13 58v5m-5-3h10"
-                stroke="#000"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <path d="M0 90h54" stroke="#000" strokeWidth="2" />
-              <path
-                d="M10 90v30c0 10 10 15 20 15s20-5 20-15V90"
-                fill="#fff"
-                stroke="#000"
-                strokeWidth="2"
-              />
-              {/* Scissors */}
-              <path
-                d="M5 45l-10-10 5-5 10 10-5 5z"
-                fill="#fff"
-                stroke="#000"
-                strokeWidth="2"
-              />
-              <path d="M5 45l-10 10" stroke="#000" strokeWidth="2" />
-              <path d="M5 35l-10-10" stroke="#000" strokeWidth="2" />
-              {/* Comb */}
-              <path
-                d="M45 40h10v5h-10v10h-5v-10h-10v-5h10v-10h5v10z"
-                fill="#fff"
-                stroke="#000"
-                strokeWidth="2"
-              />
-            </g>
-            {/* Client */}
-            <g transform="translate(90, 100)">
-              <circle
-                cx="0"
-                cy="0"
-                r="25"
-                fill="#fff"
-                stroke="#000"
-                strokeWidth="2"
-              />
-              <path
-                d="M-20 25h40v40c0 15-18 25-20 25s-20-10-20-25v-40z"
-                fill="#fff"
-                stroke="#000"
-                strokeWidth="2"
-              />
-            </g>
-          </svg>
+        <div className="w-72 h-72">
+          <img
+            src={LoggingImage}
+            alt="Logging"
+            className="w-full h-full object-cover rounded-xl"
+          />
         </div>
 
         {/* Title */}
@@ -104,20 +43,26 @@ export const ChooseImageScreen = () => {
         {/* Action Buttons */}
         <div className="flex gap-8 mt-6">
           {/* Camera */}
-          <button className="flex flex-col items-center gap-3 group">
-            <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center group-hover:bg-gray-800 transition active:scale-95 shadow-lg">
-              <Camera className="w-10 h-10 text-white" />
+          <div className="flex flex-col items-center">
+            <div className="p-[2.5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
+              <button className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition">
+                <Camera className="w-10 h-10 text-white" />
+              </button>
             </div>
-            <span className="text-base font-medium text-gray-900">Camera</span>
-          </button>
+            <span className="text-sm font-bold text-gray-900 mt-1">Camera</span>
+          </div>
 
           {/* Gallery */}
-          <button className="flex flex-col items-center gap-3 group">
-            <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center group-hover:bg-gray-800 transition active:scale-95 shadow-lg">
-              <Image className="w-10 h-10 text-white" />
+          <div className="flex flex-col items-center">
+            <div className="p-[2.5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
+              <button className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition">
+                <Image className="w-10 h-10 text-white" />
+              </button>
             </div>
-            <span className="text-base font-medium text-gray-900">Gallery</span>
-          </button>
+            <span className="text-sm font-bold text-gray-900 mt-1">
+              Gallery
+            </span>
+          </div>
         </div>
       </main>
 

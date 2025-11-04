@@ -16,7 +16,7 @@ export const FaceChanger = () => {
         </h1>
 
         {/* Illustration */}
-        <div className="w-44 h-44 sm:w-40 sm:h-40 md:w-48 md:h-48 flex-shrink-0">
+        <div className="w-72 h-72 sm:w-40 sm:h-40 md:w-48 md:h-48 flex-shrink-0">
           <img
             src={LoggingImage}
             alt="Logging"

@@ -1,0 +1,73 @@
+import { Menu, Scissors, MessageCircle, History } from "lucide-react";
+import LoggingImage from "../assets/images/Logging.jpg";
+
+export const HomeScreen = () => {
+  return (
+    <div
+      dir="rtl"
+      className="bg-white h-[100dvh] flex flex-col font-sans overflow-hidden fixed inset-0"
+    >
+      {/* Header */}
+      <header className="flex items-center justify-between px-4 pt-3 pb-2">
+        <h1 className="text-xl font-bold text-gray-900">Face Changer</h1>
+        <button className="p-2">
+          <Menu className="w-6 h-6 text-gray-900" />
+        </button>
+      </header>
+
+      {/* Main Content */}
+      <main className="flex-1 flex flex-col items-center justify-center px-6 space-y-10">
+        {/* Barber Illustration (SVG) */}
+        <div className="w-72 h-72">
+          <img
+            src={LoggingImage}
+            alt="Logging"
+            className="w-full h-full object-cover rounded-xl"
+          />
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex items-end justify-center gap-6 sm:gap-10">
+          {/* History */}
+          <div className="flex flex-col items-center">
+            <div className="p-[2.5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
+              <button className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition">
+                <History className="w-8 h-8 text-white" />
+              </button>
+            </div>
+            <span className="text-sm font-bold text-gray-900 mt-1">
+              تاریخچه
+            </span>
+          </div>
+
+          {/* Trim - Center & Bigger */}
+          <div className="flex flex-col items-center transform -translate-y-4 sm:-translate-y-6">
+            <div className="p-[5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
+              <button className="flex flex-col w-28 h-28 rounded-full gap-3 bg-black group items-center justify-center hover:bg-gray-900 transition">
+                <Scissors className="w-10 h-10 text-white" />
+              </button>
+            </div>
+            <span className="text-base font-bold text-gray-900 mt-1">
+              پیرایش
+            </span>
+          </div>
+
+          {/* Contact */}
+          <div className="flex flex-col items-center">
+            <div className="p-[2.5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
+              <button className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition">
+                <MessageCircle className="w-8 h-8 text-white" />
+              </button>
+            </div>
+            <span className="text-sm font-bold text-gray-900 mt-1">
+              ارتباط با ادمین
+            </span>
+          </div>
+        </div>
+      </main>
+
+      {/* Safe Area Bottom */}
+      <div className="h-8"></div>
+    </div>
+  );
+};

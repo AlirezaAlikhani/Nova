@@ -3,6 +3,9 @@ import "./App.css";
 import { FaceChanger } from "./pages/logging";
 import { LoginScreen } from "./pages/login";
 import { ChooseImageScreen } from "./pages/chooseImageScreen";
+import { HomeScreen } from "./pages/homeScreen";
+import { Loading } from "./pages/loading";
+import { Accsept } from "./pages/acceptImage";
 
 function App() {
 
@@ -13,6 +16,9 @@ function App() {
         <Route path="/" element={<FaceChanger />} />
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/choose-image" element={<ChooseImageScreen />} />
+        <Route path="/home-screen" element={<HomeScreen />} />
+        <Route path="/loading" element={<Loading />} />
+        <Route path="/accsept" element={<Accsept />} />
       </Routes>
     </Router>
   );
