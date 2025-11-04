@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import BarberImage from "../assets/images/barberImage.gif";
 import { useState } from "react";
 // import BarberImage from "./assets/images/barber-illustration.png"; // تصویر آرایشگر رو اینجا بذار
@@ -5,6 +6,7 @@ import { useState } from "react";
 export const LoginScreen = () => {
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const isFormValid = account.trim().length > 0 && password.trim().length > 0;
 
@@ -74,6 +76,9 @@ export const LoginScreen = () => {
 
           {/* Submit Button */}
           <button
+            onClick={() => {
+              if (isFormValid) navigate("/choose-image");
+            }}
             className={`w-full py-3 rounded-full font-bold text-base sm:text-lg md:text-xl transition-all duration-300 active:scale-95 shadow-md ${
               isFormValid
                 ? "bg-black text-white hover:bg-gray-800"
