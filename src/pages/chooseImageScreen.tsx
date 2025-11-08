@@ -1,5 +1,6 @@
 import { ChevronRight, Camera, Image } from "lucide-react";
 import LoggingImage from "../assets/images/Logging.jpg";
+import { Button } from "@/components/ui/Button";
 
 export const ChooseImageScreen = () => {
   return (
@@ -13,10 +14,10 @@ export const ChooseImageScreen = () => {
           <ChevronRight className="inline w-4 h-4 text-red-500 -rotate-90 mx-1" />
           <span className="text-sm text-red-500 font-medium">فرستادن عکس</span>
         </div> */}
-        <button className="flex items-center text-black bg-white gap-1 text-lg font-semibold ">
+        <Button variant="ghost" className="flex items-center text-black bg-white gap-1 text-lg font-semibold">
           بازگشت
           <ChevronRight className="w-5 h-5 rotate-180" />
-        </button>
+        </Button>
       </header>
 
       {/* Main Content */}
@@ -45,9 +46,12 @@ export const ChooseImageScreen = () => {
           {/* Camera */}
           <div className="flex flex-col items-center">
             <div className="p-[2.5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
-              <button className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition">
+              <Button 
+                variant="ghost" 
+                className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
+              >
                 <Camera className="w-10 h-10 text-white" />
-              </button>
+              </Button>
             </div>
             <span className="text-sm font-bold text-gray-900 mt-1">Camera</span>
           </div>
@@ -55,9 +59,12 @@ export const ChooseImageScreen = () => {
           {/* Gallery */}
           <div className="flex flex-col items-center">
             <div className="p-[2.5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
-              <button className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition">
+              <Button 
+                variant="ghost" 
+                className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
+              >
                 <Image className="w-10 h-10 text-white" />
-              </button>
+              </Button>
             </div>
             <span className="text-sm font-bold text-gray-900 mt-1">
               Gallery

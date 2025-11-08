@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import BarberImage from "../assets/images/barberImage.gif";
 import { useState } from "react";
+import { Button } from "@/components/ui/Button";
 // import BarberImage from "./assets/images/barber-illustration.png"; // تصویر آرایشگر رو اینجا بذار
 
 export const LoginScreen = () => {
@@ -75,19 +76,17 @@ export const LoginScreen = () => {
           </div>
 
           {/* Submit Button */}
-          <button
+          <Button
             onClick={() => {
               if (isFormValid) navigate("/home-screen");
             }}
-            className={`w-full py-3 rounded-full font-bold text-base sm:text-lg md:text-xl transition-all duration-300 active:scale-95 shadow-md ${
-              isFormValid
-                ? "bg-black text-white hover:bg-gray-800"
-                : "bg-gray-200 text-gray-500 cursor-not-allowed"
-            }`}
             disabled={!isFormValid}
+            className={`w-full py-3 rounded-lg font-bold text-base sm:text-lg md:text-xl shadow-md ${
+              !isFormValid ? "bg-gray-200 text-gray-500" : ""
+            }`}
           >
             تأیید
-          </button>
+          </Button>
         </div>
 
         {/* Barber Illustration */}

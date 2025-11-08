@@ -1,5 +1,6 @@
 import LoggingImage from "../assets/images/Logging.jpg";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/Button";
 
 export const FaceChanger = () => {
   const navigate = useNavigate();
@@ -26,15 +27,18 @@ export const FaceChanger = () => {
 
         {/* Buttons */}
         <div className="w-full space-y-3 sm:space-y-4">
-          <button
+          <Button
             onClick={() => navigate("/login")}
-            className="w-full bg-black text-white text-base sm:text-lg md:text-xl font-bold py-2.5 sm:py-3 rounded-full hover:bg-gray-800 transition active:scale-95"
+            className="w-full text-base sm:text-lg md:text-xl font-bold py-2.5 sm:py-3 rounded-lg"
           >
             ورود
-          </button>
-          <button className="w-full bg-red-200 text-red-700 text-base sm:text-lg md:text-xl font-bold py-2.5 sm:py-3 rounded-full hover:bg-red-300 transition active:scale-95">
+          </Button>
+          <Button
+            variant="destructive"
+            className="w-full text-base sm:text-lg md:text-xl font-bold py-2.5 sm:py-3 rounded-lg"
+          >
             ارتباط با ادمین
-          </button>
+          </Button>
         </div>
       </main>
     </div>

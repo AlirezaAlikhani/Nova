@@ -1,5 +1,16 @@
 import LoggingImage from "../assets/images/carchter.png";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/Button";
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerClose,
+} from "@/components/ui/drawer";
 
 export const Accsept = () => {
   const navigate = useNavigate();
@@ -18,9 +29,7 @@ export const Accsept = () => {
             className="w-[200px] h-[254px] object-cover rounded-xl mb-4"
           />
 
-          <h1 className="text-2xl font-bold text-gray-900">
-            عکس دریافت شد!
-          </h1>
+          <h1 className="text-2xl font-bold text-gray-900">عکس دریافت شد!</h1>
 
           <p className="text-sm text-gray-500 mt-2 leading-relaxed">
             تایید می‌کنید یا ترجیح می‌دهید دوباره ارسال کنید؟
@@ -30,20 +39,46 @@ export const Accsept = () => {
         {/* Buttons */}
         <div className="w-full space-y-3">
           {/* تایید دکمه مشکی پر */}
-          <button
+          <Button
             onClick={() => navigate("/login")}
-            className="w-full bg-black text-white text-lg font-semibold py-3 rounded-2xl hover:bg-gray-900 transition active:scale-95"
+            className="w-full text-lg font-semibold py-3 rounded-lg"
           >
             تایید
-          </button>
+          </Button>
 
           {/* ارسال دوباره دکمه توخالی */}
-          <button
-            onClick={() => navigate("/choose-image")}
-            className="w-full border-2 border-black text-black text-lg font-semibold py-3 rounded-2xl bg-white hover:bg-gray-100 transition active:scale-95"
-          >
-            ارسال دوباره
-          </button>
+          <Drawer>
+            <DrawerTrigger asChild>
+              <Button
+                variant="outline"
+                className="w-full text-lg font-semibold py-3 rounded-lg"
+              >
+                ارسال دوباره
+              </Button>
+            </DrawerTrigger>
+
+            <DrawerContent>
+              <div className="mx-auto w-full max-w-sm">
+                <DrawerHeader>
+                  <DrawerTitle>عنوان Drawer</DrawerTitle>
+                  <DrawerDescription>
+                    توضیح کوتاه یا محتوای اولیه اینجا قرار می‌گیرد.
+                  </DrawerDescription>
+                </DrawerHeader>
+
+                {/* اینجا می‌تونی هر محتوایی که خواستی بذاری */}
+                <div className="p-4">
+                  <p>این محتوای ساده Drawer است.</p>
+                </div>
+
+                <DrawerFooter>
+                  <DrawerClose asChild>
+                    <Button variant="outline">بستن</Button>
+                  </DrawerClose>
+                </DrawerFooter>
+              </div>
+            </DrawerContent>
+          </Drawer>
         </div>
       </main>
     </div>

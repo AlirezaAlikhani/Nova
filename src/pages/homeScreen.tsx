@@ -1,5 +1,6 @@
 import { Menu, Scissors, MessageCircle, History } from "lucide-react";
 import LoggingImage from "../assets/images/Logging.jpg";
+import { Button } from "@/components/ui/Button";
 
 export const HomeScreen = () => {
   return (
@@ -10,9 +11,9 @@ export const HomeScreen = () => {
       {/* Header */}
       <header className="flex items-center justify-between px-4 pt-3 pb-2">
         <h1 className="text-xl font-bold text-gray-900">Face Changer</h1>
-        <button className="p-2">
+        <Button variant="ghost" size="icon" className="p-2">
           <Menu className="w-6 h-6 text-gray-900" />
-        </button>
+        </Button>
       </header>
 
       {/* Main Content */}
@@ -31,9 +32,12 @@ export const HomeScreen = () => {
           {/* History */}
           <div className="flex flex-col items-center">
             <div className="p-[2.5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
-              <button className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition">
+              <Button 
+                variant="ghost" 
+                className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
+              >
                 <History className="w-8 h-8 text-white" />
-              </button>
+              </Button>
             </div>
             <span className="text-sm font-bold text-gray-900 mt-1">
               تاریخچه
@@ -43,9 +47,12 @@ export const HomeScreen = () => {
           {/* Trim - Center & Bigger */}
           <div className="flex flex-col items-center transform -translate-y-4 sm:-translate-y-6">
             <div className="p-[5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
-              <button className="flex flex-col w-28 h-28 rounded-full gap-3 bg-black group items-center justify-center hover:bg-gray-900 transition">
-                <Scissors className="w-10 h-10 text-white" />
-              </button>
+              <Button 
+                variant="ghost" 
+                className="flex flex-col w-28 h-28 rounded-full gap-3 bg-black group items-center justify-center hover:bg-gray-900 transition p-0"
+              >
+                <Scissors className="w-20 h-20 text-white" />
+              </Button>
             </div>
             <span className="text-base font-bold text-gray-900 mt-1">
               پیرایش
@@ -55,9 +62,12 @@ export const HomeScreen = () => {
           {/* Contact */}
           <div className="flex flex-col items-center">
             <div className="p-[2.5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
-              <button className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition">
+              <Button 
+                variant="ghost" 
+                className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
+              >
                 <MessageCircle className="w-8 h-8 text-white" />
-              </button>
+              </Button>
             </div>
             <span className="text-sm font-bold text-gray-900 mt-1">
               ارتباط با ادمین
