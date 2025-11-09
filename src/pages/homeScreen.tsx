@@ -32,11 +32,11 @@ export const HomeScreen = () => {
           {/* History */}
           <div className="flex flex-col items-center">
             <div className="p-[2.5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
-              <Button 
-                variant="ghost" 
+              <Button
+                variant="ghost"
                 className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
               >
-                <History className="w-8 h-8 text-white" />
+                <History className="!w-8 !h-8 text-white" />
               </Button>
             </div>
             <span className="text-sm font-bold text-gray-900 mt-1">
@@ -47,11 +47,14 @@ export const HomeScreen = () => {
           {/* Trim - Center & Bigger */}
           <div className="flex flex-col items-center transform -translate-y-4 sm:-translate-y-6">
             <div className="p-[5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
-              <Button 
-                variant="ghost" 
+              <Button
+                variant="ghost"
                 className="flex flex-col w-28 h-28 rounded-full gap-3 bg-black group items-center justify-center hover:bg-gray-900 transition p-0"
               >
-                <Scissors className="w-20 h-20 text-white" />
+                <Scissors
+                  className="text-white !h-14 !w-14"
+                  strokeWidth={1.4}
+                />
               </Button>
             </div>
             <span className="text-base font-bold text-gray-900 mt-1">
@@ -62,11 +65,11 @@ export const HomeScreen = () => {
           {/* Contact */}
           <div className="flex flex-col items-center">
             <div className="p-[2.5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
-              <Button 
-                variant="ghost" 
+              <Button
+                variant="ghost"
                 className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
               >
-                <MessageCircle className="w-8 h-8 text-white" />
+                <MessageCircle className="!w-8 !h-8 text-white" />
               </Button>
             </div>
             <span className="text-sm font-bold text-gray-900 mt-1">

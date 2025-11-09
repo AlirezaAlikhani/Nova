@@ -53,7 +53,7 @@ export const ChooseImageScreen = () => {
                 <Camera className="w-10 h-10 text-white" />
               </Button>
             </div>
-            <span className="text-sm font-bold text-gray-900 mt-1">Camera</span>
+            <span className="text-sm font-bold text-gray-900 mt-1">دوربین</span>
           </div>
 
           {/* Gallery */}
@@ -67,7 +67,7 @@ export const ChooseImageScreen = () => {
               </Button>
             </div>
             <span className="text-sm font-bold text-gray-900 mt-1">
-              Gallery
+              گالری
             </span>
           </div>
         </div>

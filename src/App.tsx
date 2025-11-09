@@ -7,6 +7,7 @@ import { ChooseImageScreen } from "./pages/chooseImageScreen";
 import { HomeScreen } from "./pages/homeScreen";
 import { Loading } from "./pages/loading";
 import { Accsept } from "./pages/acceptImage";
+import HairStyleSelection from "./pages/hairStyleSelection";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/loading" element={<Loading />} />
         <Route path="/accsept" element={<Accsept />} />
         <Route path="/shat" element={<Shatcnb />} />
+        <Route path="/hair-style" element={<HairStyleSelection />} />
       </Routes>
     </Router>
   );

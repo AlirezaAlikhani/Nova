@@ -1,4 +1,5 @@
 import LoggingImage from "../assets/images/carchter.png";
+import { Camera, Image } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/Button";
 import {
@@ -7,9 +8,6 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerClose,
 } from "@/components/ui/drawer";
 
 export const Accsept = () => {
@@ -60,22 +58,39 @@ export const Accsept = () => {
             <DrawerContent>
               <div className="mx-auto w-full max-w-sm">
                 <DrawerHeader>
-                  <DrawerTitle>عنوان Drawer</DrawerTitle>
-                  <DrawerDescription>
-                    توضیح کوتاه یا محتوای اولیه اینجا قرار می‌گیرد.
-                  </DrawerDescription>
+                  <DrawerTitle>ارسال فایل</DrawerTitle>
+                  <div className="flex justify-center gap-12 mt-6">
+                    {/* Camera */}
+                    <div className="flex flex-col items-center">
+                      <div className="p-[2.5px] rounded-2xl bg-gradient-to-br from-purple-600 via-purple-800 to-black">
+                        <Button
+                          variant="ghost"
+                          className="flex flex-col w-20 h-20 rounded-2xl gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
+                        >
+                          <Camera className="!w-10 !h-10 text-white" />
+                        </Button>
+                      </div>
+                      <span className="text-sm font-bold text-gray-900 mt-1">
+                        دوربین
+                      </span>
+                    </div>
+
+                    {/* Gallery */}
+                    <div className="flex flex-col items-center">
+                      <div className="p-[2.5px] rounded-2xl bg-gradient-to-br from-purple-600 via-purple-800 to-black">
+                        <Button
+                          variant="ghost"
+                          className="flex flex-col w-20 h-20 rounded-2xl gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
+                        >
+                          <Image className="!w-10 !h-10 text-white" />
+                        </Button>
+                      </div>
+                      <span className="text-sm font-bold text-gray-900 mt-1">
+                        گالری
+                      </span>
+                    </div>
+                  </div>
                 </DrawerHeader>
-
-                {/* اینجا می‌تونی هر محتوایی که خواستی بذاری */}
-                <div className="p-4">
-                  <p>این محتوای ساده Drawer است.</p>
-                </div>
-
-                <DrawerFooter>
-                  <DrawerClose asChild>
-                    <Button variant="outline">بستن</Button>
-                  </DrawerClose>
-                </DrawerFooter>
               </div>
             </DrawerContent>
           </Drawer>
