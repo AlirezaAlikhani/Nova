@@ -1,6 +1,6 @@
 import LoggingImage from "../assets/images/carchter.png";
 import { Camera, Image } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/Button";
 import {
   Drawer,
@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/drawer";
 
 export const Accsept = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <div
