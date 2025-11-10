@@ -81,6 +81,8 @@ export const HairStyleSelection = () => {
           <Upload className="w-4 h-4 text-white" />
         </div>
       </Button>
+
+      
     </div>
   );
 };
