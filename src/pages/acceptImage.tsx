@@ -38,7 +38,6 @@ export const Accsept = () => {
         <div className="w-full space-y-3">
           {/* تایید دکمه مشکی پر */}
           <Button
-            onClick={() => navigate("/login")}
             className="w-full text-lg font-semibold py-3 rounded-lg"
           >
             تایید

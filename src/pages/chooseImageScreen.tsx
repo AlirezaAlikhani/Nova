@@ -42,7 +42,7 @@ export const ChooseImageScreen = () => {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-8 mt-6">
+        <div className="flex !mt-10 gap-10">
           {/* Camera */}
           <div className="flex flex-col items-center">
             <div className="p-[2.5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
@@ -50,7 +50,7 @@ export const ChooseImageScreen = () => {
                 variant="ghost" 
                 className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
               >
-                <Camera className="w-10 h-10 text-white" />
+                <Camera className="!w-10 !h-10 text-white" />
               </Button>
             </div>
             <span className="text-sm font-bold text-gray-900 mt-1">دوربین</span>
@@ -63,7 +63,7 @@ export const ChooseImageScreen = () => {
                 variant="ghost" 
                 className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
               >
-                <Image className="w-10 h-10 text-white" />
+                <Image className="!w-10 !h-10 text-white" />
               </Button>
             </div>
             <span className="text-sm font-bold text-gray-900 mt-1">

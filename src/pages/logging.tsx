@@ -8,9 +8,9 @@ export const FaceChanger = () => {
   return (
     <div
       dir="rtl"
-      className="bg-white h-[100dvh] flex flex-col justify-center items-center font-sans overflow-hidden fixed inset-0"
+      className="bg-white h-[100dvh] flex flex-col justify-center items-center font-sans overflow-hidden fixed inset-0 px-6"
     >
-      <main className="flex flex-col items-center justify-center px-6 space-y-6 sm:space-y-8 w-full max-w-xs">
+      <main className="flex flex-col items-center justify-center space-y-8 w-full max-w-sm">
         {/* Title */}
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 text-center">
           Face Changer
@@ -26,17 +26,14 @@ export const FaceChanger = () => {
         </div>
 
         {/* Buttons */}
-        <div className="w-full space-y-3 sm:space-y-4">
+        <div className="w-full space-y-3">
           <Button
             onClick={() => navigate("/login")}
-            className="w-full text-base sm:text-lg md:text-xl font-bold py-2.5 sm:py-3 rounded-lg"
+            className="w-full text-lg font-semibold py-3 rounded-lg"
           >
             ورود
           </Button>
-          <Button
-            variant="destructive"
-            className="w-full text-base sm:text-lg md:text-xl font-bold py-2.5 sm:py-3 rounded-lg"
-          >
+          <Button className="w-full text-lg font-semibold py-3 rounded-lg bg-[#ff8e8e] hover:bg-[#ff8e8e]/90 text-white">
             ارتباط با ادمین
           </Button>
         </div>

@@ -10,14 +10,18 @@ export const HomeScreen = () => {
     >
       {/* Header */}
       <header className="flex items-center justify-between px-4 pt-3 pb-2">
-        <h1 className="text-xl font-bold text-gray-900">Face Changer</h1>
-        <Button variant="ghost" size="icon" className="p-2">
-          <Menu className="w-6 h-6 text-gray-900" />
+        <Button
+          variant="ghost"
+          size="icon"
+          className="p-0 bg-transparent hover:bg-transparent focus:bg-transparent active:bg-transparent"
+        >
+          <Menu className="!w-6 !h-6 text-2xl text-gray-900" />
         </Button>
+        <span className="text-xl font-bold text-gray-900">تغییر صورت</span>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center justify-center px-6 space-y-10">
+      <main className="flex-1 flex flex-col items-center justify-center px-4 space-y-6">
         {/* Barber Illustration (SVG) */}
         <div className="w-72 h-72">
           <img
@@ -28,7 +32,7 @@ export const HomeScreen = () => {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex items-end justify-center gap-6 sm:gap-10">
+        <div className="flex !mt-20 items-end justify-center gap-6">
           {/* History */}
           <div className="flex flex-col items-center">
             <div className="p-[2.5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
@@ -45,7 +49,7 @@ export const HomeScreen = () => {
           </div>
 
           {/* Trim - Center & Bigger */}
-          <div className="flex flex-col items-center transform -translate-y-4 sm:-translate-y-6">
+          <div className="flex flex-col items-center transform -translate-y-6 sm:-translate-y-10">
             <div className="p-[5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
               <Button
                 variant="ghost"
