@@ -39,7 +39,7 @@ export const LoginScreen = () => {
               value={account}
               onChange={(e) => setAccount(e.target.value)}
               placeholder="09XXXXXXXXX"
-              className="w-full px-4 py-3 text-black text-base bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all placeholder-gray-400"
+              className="w-full h-14 px-4 py-3 text-black text-base bg-gray-100 rounded-3xl focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all placeholder-gray-400"
               style={{ direction: "ltr" }}
             />
           </div>
@@ -54,7 +54,7 @@ export const LoginScreen = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              className="w-full px-4 py-3 text-black text-base bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all placeholder-gray-400"
+              className="w-full h-14 px-4 py-3 text-black text-base bg-gray-100 rounded-3xl focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all placeholder-gray-400"
               style={{ direction: "ltr" }}
             />
           </div>
@@ -65,7 +65,7 @@ export const LoginScreen = () => {
               if (isFormValid) navigate("/home-screen");
             }}
             disabled={!isFormValid}
-            className={`w-full py-3 rounded-lg font-bold text-base sm:text-lg md:text-xl shadow-md ${
+            className={`w-full py-3 font-bold text-base sm:text-lg md:text-xl shadow-md ${
               !isFormValid ? "bg-gray-200 text-gray-500" : ""
             }`}
           >

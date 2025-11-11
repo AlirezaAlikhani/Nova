@@ -66,7 +66,7 @@ export const ResultPage = () => {
       </div>
 
       {/* Action Icons */}
-      <div className="flex flex-row-reverse items-center mb-8 gap-0">
+      <div className="flex flex-row-reverse items-center gap-0">
         <button
           onClick={() => {
             // Save functionality
@@ -140,13 +140,13 @@ export const ResultPage = () => {
       <div className="flex gap-4 mt-auto">
         <Button
           variant="outline"
-          className="flex-1 py-4 rounded-2xl text-lg font-semibold border-2 border-gray-900"
+          className="flex-1 py-4 text-lg font-semibold border-2 border-gray-900"
           onClick={() => navigate("/home-screen")}
         >
           خروج
         </Button>
         <Button
-          className="flex-1 py-4 rounded-2xl text-lg font-semibold bg-black hover:bg-gray-900 text-white"
+          className="flex-1 py-4 text-lg font-semibold bg-black hover:bg-gray-900 text-white"
           onClick={() => navigate("/finalize")}
         >
           امتحان مجدد

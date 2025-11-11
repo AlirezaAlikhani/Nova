@@ -26,14 +26,14 @@ export const FaceChanger = () => {
         </div>
 
         {/* Buttons */}
-        <div className="w-full space-y-3">
+        <div className="w-full space-y-5">
           <Button
             onClick={() => navigate("/login")}
-            className="w-full text-lg font-semibold py-3 rounded-lg"
+            className="w-full text-lg font-semibold py-3 "
           >
             ورود
           </Button>
-          <Button className="w-full text-lg font-semibold py-3 rounded-lg bg-[#ff8e8e] hover:bg-[#ff8e8e]/90 text-white">
+          <Button className="w-full text-lg font-semibold py-3  bg-[#ff8e8e] hover:bg-[#ff8e8e]/90 text-white">
             ارتباط با ادمین
           </Button>
         </div>

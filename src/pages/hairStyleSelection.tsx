@@ -167,7 +167,7 @@ export const HairStyleSelection = () => {
           <DrawerTrigger asChild>
             <Button
               disabled={!selectedId}
-              className={`w-full mt-10 py-5 rounded-2xl text-lg font-semibold flex items-center justify-center gap-3 ${
+              className={`w-full mt-10 py-5  text-lg font-semibold flex items-center justify-center gap-3 ${
                 selectedId
                   ? "bg-black hover:bg-gray-900 text-white"
                   : "bg-gray-200 text-gray-500 cursor-not-allowed"
@@ -175,7 +175,7 @@ export const HairStyleSelection = () => {
               onClick={() => setDrawerOpen(true)}
             >
               <span>ارسال مدل</span>
-              <div className="w-7 h-7 rounded-lg bg-white/15 flex items-center justify-center">
+              <div className="w-7 h-7 bg-white/15 flex items-center justify-center">
                 <Upload className="w-4 h-4 text-white" />
               </div>
             </Button>
@@ -190,7 +190,7 @@ export const HairStyleSelection = () => {
                     <div className="p-[2.5px] rounded-2xl bg-gradient-to-br from-purple-600 via-purple-800 to-black">
                       <Button
                         variant="ghost"
-                        className="flex flex-col w-20 h-20 rounded-2xl gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
+                        className="flex flex-col w-20 h-20  gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
                       >
                         <Camera className="!w-10 !h-10 text-white" />
                       </Button>
@@ -223,7 +223,7 @@ export const HairStyleSelection = () => {
       ) : (
         <Button
           disabled={!selectedId}
-          className={`w-full mt-10 py-5 rounded-2xl text-lg font-semibold flex items-center justify-center ${
+          className={`w-full mt-10 py-5  text-lg font-semibold flex items-center justify-center ${
             selectedId
               ? "bg-black hover:bg-gray-900 text-white"
               : "bg-gray-200 text-gray-500 cursor-not-allowed"

@@ -1,6 +1,7 @@
 import LoggingImage from "../assets/images/carchter.png";
 import { Camera, Image } from "lucide-react";
-// import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/Button";
 import {
   Drawer,
@@ -11,7 +12,22 @@ import {
 } from "@/components/ui/drawer";
 
 export const Accsept = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const location = useLocation() as { state?: { file?: File } };
+  const selectedFile = location.state?.file;
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreviewUrl(null);
+      return;
+    }
+    const url = URL.createObjectURL(selectedFile);
+    setPreviewUrl(url);
+    return () => {
+      URL.revokeObjectURL(url);
+    };
+  }, [selectedFile]);
 
   return (
     <div
@@ -22,7 +38,7 @@ export const Accsept = () => {
         {/* Illustration + Text */}
         <div className="flex flex-col items-center text-center">
           <img
-            src={LoggingImage}
+            src={previewUrl ?? LoggingImage}
             alt="Logging"
             className="w-[200px] h-[254px] object-cover rounded-xl mb-4"
           />
@@ -38,7 +54,8 @@ export const Accsept = () => {
         <div className="w-full space-y-3">
           {/* تایید دکمه مشکی پر */}
           <Button
-            className="w-full text-lg font-semibold py-3 rounded-lg"
+            className="w-full text-lg font-semibold py-3 "
+            onClick={() => navigate("/hair-style")}
           >
             تایید
           </Button>
@@ -48,7 +65,7 @@ export const Accsept = () => {
             <DrawerTrigger asChild>
               <Button
                 variant="outline"
-                className="w-full  text-lg font-semibold py-3 rounded-lg"
+                className="w-full text-lg font-semibold py-3 "
               >
                 ارسال دوباره
               </Button>

@@ -1,8 +1,27 @@
 import { ChevronRight, Camera, Image } from "lucide-react";
 import LoggingImage from "../assets/images/Logging.jpg";
 import { Button } from "@/components/ui/Button";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const ChooseImageScreen = () => {
+  const navigate = useNavigate();
+  const galleryInputRef = useRef<HTMLInputElement | null>(null);
+  const cameraInputRef = useRef<HTMLInputElement | null>(null);
+
+  const handlePickFromGallery = () => {
+    galleryInputRef.current?.click();
+  };
+
+  const handleOpenCamera = () => {
+    cameraInputRef.current?.click();
+  };
+
+  const handleFileSelected = (file?: File | null) => {
+    if (!file) return;
+    navigate("/loading", { state: { file } });
+  };
+
   return (
     <div
       dir="rtl"
@@ -14,7 +33,11 @@ export const ChooseImageScreen = () => {
           <ChevronRight className="inline w-4 h-4 text-red-500 -rotate-90 mx-1" />
           <span className="text-sm text-red-500 font-medium">فرستادن عکس</span>
         </div> */}
-        <Button variant="ghost" className="flex items-center text-black bg-white gap-1 text-lg font-semibold">
+        <Button
+          variant="ghost"
+          className="flex items-center text-black bg-white gap-1 text-lg font-semibold"
+          onClick={() => navigate(-1)}
+        >
           بازگشت
           <ChevronRight className="w-5 h-5 rotate-180" />
         </Button>
@@ -46,9 +69,10 @@ export const ChooseImageScreen = () => {
           {/* Camera */}
           <div className="flex flex-col items-center">
             <div className="p-[2.5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
-              <Button 
-                variant="ghost" 
+              <Button
+                variant="ghost"
                 className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
+                onClick={handleOpenCamera}
               >
                 <Camera className="!w-10 !h-10 text-white" />
               </Button>
@@ -59,18 +83,34 @@ export const ChooseImageScreen = () => {
           {/* Gallery */}
           <div className="flex flex-col items-center">
             <div className="p-[2.5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
-              <Button 
-                variant="ghost" 
+              <Button
+                variant="ghost"
                 className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
+                onClick={handlePickFromGallery}
               >
                 <Image className="!w-10 !h-10 text-white" />
               </Button>
             </div>
-            <span className="text-sm font-bold text-gray-900 mt-1">
-              گالری
-            </span>
+            <span className="text-sm font-bold text-gray-900 mt-1">گالری</span>
           </div>
         </div>
+
+        {/* Hidden file inputs */}
+        <input
+          ref={galleryInputRef}
+          type="file"
+          accept="image/*"
+          className="hidden"
+          onChange={(e) => handleFileSelected(e.target.files?.[0])}
+        />
+        <input
+          ref={cameraInputRef}
+          type="file"
+          accept="image/*"
+          capture="environment"
+          className="hidden"
+          onChange={(e) => handleFileSelected(e.target.files?.[0])}
+        />
       </main>
 
       {/* Safe Area Bottom */}

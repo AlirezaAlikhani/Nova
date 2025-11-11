@@ -1,7 +1,19 @@
 import { LifeLine } from "react-loading-indicators";
 import BarberImage from "../assets/images/barberImage.gif";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const Loading = () => {
+  const navigate = useNavigate();
+  const location = useLocation() as { state?: { file?: File } };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      navigate("/accsept", { state: { file: location.state?.file } });
+    }, 1200);
+    return () => clearTimeout(timeout);
+  }, [location.state?.file, navigate]);
+
   return (
     <div
       dir="rtl"

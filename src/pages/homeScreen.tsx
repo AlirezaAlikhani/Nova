@@ -1,8 +1,10 @@
 import { Menu, Scissors, MessageCircle, History } from "lucide-react";
 import LoggingImage from "../assets/images/Logging.jpg";
 import { Button } from "@/components/ui/Button";
+import { useNavigate } from "react-router-dom";
 
 export const HomeScreen = () => {
+  const navigate = useNavigate();
   return (
     <div
       dir="rtl"
@@ -54,6 +56,7 @@ export const HomeScreen = () => {
               <Button
                 variant="ghost"
                 className="flex flex-col w-28 h-28 rounded-full gap-3 bg-black group items-center justify-center hover:bg-gray-900 transition p-0"
+                onClick={() => navigate("/choose-image")}
               >
                 <Scissors
                   className="text-white !h-14 !w-14"
