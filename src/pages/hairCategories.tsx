@@ -1,14 +1,8 @@
-import { ChevronLeft, Upload, Camera, Image, RotateCcw } from "lucide-react";
+import { ChevronLeft, Upload, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
+// Removed unused Drawer imports
 
 export const HairStyleCategories = () => {
   const navigate = useNavigate();

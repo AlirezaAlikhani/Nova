@@ -30,17 +30,18 @@ export const HairStyleSelection = () => {
     }
   }, []);
 
-  const persistSelected = () => {
-    if (!selectedId) return;
-    const style = hairstyles.find((s) => s.id === selectedId);
-    if (!style) return;
-    const next = [{ id: style.id, name: style.name }, ...previousModels].slice(
-      0,
-      12
-    );
-    setPreviousModels(next);
-    localStorage.setItem("previousModels", JSON.stringify(next));
-  };
+  // Persist selected item for dashboard usage (currently unused)
+  // const persistSelected = () => {
+  //   if (!selectedId) return;
+  //   const style = hairstyles.find((s) => s.id === selectedId);
+  //   if (!style) return;
+  //   const next = [{ id: style.id, name: style.name }, ...previousModels].slice(
+  //     0,
+  //     12
+  //   );
+  //   setPreviousModels(next);
+  //   localStorage.setItem("previousModels", JSON.stringify(next));
+  // };
 
   const hairstyles = [
     { id: 1, name: "بازکات" },
@@ -167,7 +168,7 @@ export const HairStyleSelection = () => {
           <DrawerTrigger asChild>
             <Button
               disabled={!selectedId}
-              className={`w-full mt-10 py-5  text-lg font-semibold flex items-center justify-center gap-3 ${
+              className={`w-full mt-10 py-5 rounded-2xl text-lg font-semibold flex items-center justify-center gap-3 ${
                 selectedId
                   ? "bg-black hover:bg-gray-900 text-white"
                   : "bg-gray-200 text-gray-500 cursor-not-allowed"
@@ -190,7 +191,7 @@ export const HairStyleSelection = () => {
                     <div className="p-[2.5px] rounded-2xl bg-gradient-to-br from-purple-600 via-purple-800 to-black">
                       <Button
                         variant="ghost"
-                        className="flex flex-col w-20 h-20  gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
+                        className="flex flex-col w-20 h-20 gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
                       >
                         <Camera className="!w-10 !h-10 text-white" />
                       </Button>
