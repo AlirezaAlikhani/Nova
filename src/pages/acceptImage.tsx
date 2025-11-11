@@ -48,7 +48,7 @@ export const Accsept = () => {
             <DrawerTrigger asChild>
               <Button
                 variant="outline"
-                className="w-full text-lg font-semibold py-3 rounded-lg"
+                className="w-full  text-lg font-semibold py-3 rounded-lg"
               >
                 ارسال دوباره
               </Button>

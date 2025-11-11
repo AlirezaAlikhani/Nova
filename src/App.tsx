@@ -7,9 +7,11 @@ import { HomeScreen } from "./pages/homeScreen";
 import { Loading } from "./pages/loading";
 import { Accsept } from "./pages/acceptImage";
 import HairStyleSelection from "./pages/hairStyleSelection";
+import HairStyleCategories from "./pages/hairCategories";
+import FinalizePage from "./pages/finalize";
+import ResultPage from "./pages/result";
 
 function App() {
-
   return (
     //fragment
     <Router>
@@ -21,6 +23,9 @@ function App() {
         <Route path="/loading" element={<Loading />} />
         <Route path="/accsept" element={<Accsept />} />
         <Route path="/hair-style" element={<HairStyleSelection />} />
+        <Route path="/categories" element={<HairStyleCategories />} />
+        <Route path="/finalize" element={<FinalizePage />} />
+        <Route path="/result" element={<ResultPage />} />
       </Routes>
     </Router>
   );
