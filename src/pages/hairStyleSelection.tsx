@@ -13,8 +13,12 @@ import {
 export const HairStyleSelection = () => {
   const navigate = useNavigate();
   const [selectedId, setSelectedId] = useState<number | null>(null);
-  const [activeTab, setActiveTab] = useState<"dashboard" | "categories">("categories");
-  const [previousModels, setPreviousModels] = useState<{ id: number; name: string; image?: string }[]>([]);
+  const [activeTab, setActiveTab] = useState<"dashboard" | "categories">(
+    "categories"
+  );
+  const [previousModels, setPreviousModels] = useState<
+    { id: number; name: string; image?: string }[]
+  >([]);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
@@ -30,18 +34,52 @@ export const HairStyleSelection = () => {
 
   const hairstyles = useMemo(
     () => [
-      { id: 1, name: "بازکات", image: "https://res.cloudinary.com/dzjkgjjut/image/upload/v1731490307/haircuts/bazkat.png" },
-      { id: 2, name: "ساید پارت", image: "https://res.cloudinary.com/dzjkgjjut/image/upload/v1731490307/haircuts/side-part.png" },
-      { id: 3, name: "مولت", image: "https://res.cloudinary.com/dzjkgjjut/image/upload/v1731490307/haircuts/mullet.png" },
-      { id: 4, name: "فر", image: "https://res.cloudinary.com/dzjkgjjut/image/upload/v1731490307/haircuts/curly.png" },
-      { id: 5, name: "اسپایکی", image: "https://res.cloudinary.com/dzjkgjjut/image/upload/v1731490307/haircuts/spiky.png" },
-      { id: 6, name: "پامپادور", image: "https://res.cloudinary.com/dzjkgjjut/image/upload/v1731490307/haircuts/pompadour.png" },
+      {
+        id: 1,
+        name: "بازکات",
+        image:
+          "https://res.cloudinary.com/dzjkgjjut/image/upload/v1731490307/haircuts/bazkat.png",
+      },
+      {
+        id: 2,
+        name: "ساید پارت",
+        image:
+          "https://res.cloudinary.com/dzjkgjjut/image/upload/v1731490307/haircuts/side-part.png",
+      },
+      {
+        id: 3,
+        name: "مولت",
+        image:
+          "https://res.cloudinary.com/dzjkgjjut/image/upload/v1731490307/haircuts/mullet.png",
+      },
+      {
+        id: 4,
+        name: "فر",
+        image:
+          "https://res.cloudinary.com/dzjkgjjut/image/upload/v1731490307/haircuts/curly.png",
+      },
+      {
+        id: 5,
+        name: "اسپایکی",
+        image:
+          "https://res.cloudinary.com/dzjkgjjut/image/upload/v1731490307/haircuts/spiky.png",
+      },
+      {
+        id: 6,
+        name: "پامپادور",
+        image:
+          "https://res.cloudinary.com/dzjkgjjut/image/upload/v1731490307/haircuts/pompadour.png",
+      },
     ],
     []
   );
 
   return (
-    <div dir="rtl" className="h-[90dvh] flex flex-col font-sans bg-gray-50 overflow-hidden px-5 pb-5">
+    <div
+      dir="rtl"
+      className="bg-white h-[100dvh] p-10 flex flex-col font-sans overflow-hidden fixed inset-0"
+    >
+      {" "}
       {/* Header */}
       <header className="flex items-center justify-between py-3">
         <button
@@ -56,7 +94,6 @@ export const HairStyleSelection = () => {
           <RotateCcw className="w-5 h-5" />
         </button>
       </header>
-
       {/* Main */}
       <main className="flex-1 bg-white rounded-3xl flex flex-col overflow-hidden">
         {/* Tabs */}
@@ -91,29 +128,38 @@ export const HairStyleSelection = () => {
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-4 pb-5">
-              {(activeTab === "categories" ? hairstyles : previousModels).map((style) => (
-                <button
-                  key={style.id}
-                  onClick={() => setSelectedId(style.id)}
-                  className={`flex flex-col items-center rounded-3xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-all px-4 pt-5 pb-4 ${
-                    selectedId === style.id ? "border-2 border-black" : "border border-transparent"
-                  }`}
-                >
-                  <div className="w-24 h-24 mb-3 rounded-2xl flex items-center justify-center overflow-hidden">
-                    {style.image ? (
-                      <img src={style.image} alt={style.name} className="w-full h-full object-contain" />
-                    ) : (
-                      <span className="text-gray-400 text-xs">بدون عکس</span>
-                    )}
-                  </div>
-                  <span className="text-sm font-semibold text-gray-900">{style.name}</span>
-                </button>
-              ))}
+              {(activeTab === "categories" ? hairstyles : previousModels).map(
+                (style) => (
+                  <button
+                    key={style.id}
+                    onClick={() => setSelectedId(style.id)}
+                    className={`flex flex-col items-center rounded-3xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-all px-4 pt-5 pb-4 ${
+                      selectedId === style.id
+                        ? "border-2 border-black"
+                        : "border border-transparent"
+                    }`}
+                  >
+                    <div className="w-24 h-24 mb-3 rounded-2xl flex items-center justify-center overflow-hidden">
+                      {style.image ? (
+                        <img
+                          src={style.image}
+                          alt={style.name}
+                          className="w-full h-full object-contain"
+                        />
+                      ) : (
+                        <span className="text-gray-400 text-xs">بدون عکس</span>
+                      )}
+                    </div>
+                    <span className="text-sm font-semibold text-gray-900">
+                      {style.name}
+                    </span>
+                  </button>
+                )
+              )}
             </div>
           )}
         </div>
       </main>
-
       {/* Bottom Button */}
       {activeTab === "categories" ? (
         <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
@@ -140,32 +186,32 @@ export const HairStyleSelection = () => {
           <DrawerContent>
             <div className="mx-auto w-full max-w-sm">
               <DrawerHeader>
-                <DrawerTitle>ارسال فایل</DrawerTitle>
+                <DrawerTitle className="text-center">ارسال فایل</DrawerTitle>
                 <div className="flex justify-center gap-12 mt-6">
-                  {/* Camera */}
-                  <div className="flex flex-col items-center">
-                    <div className="p-[2.5px] rounded-2xl bg-gradient-to-br from-purple-600 via-purple-800 to-black">
-                      <Button
-                        variant="ghost"
-                        className="flex flex-col w-20 h-20 gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
-                      >
-                        <Camera className="!w-10 !h-10 text-white" />
-                      </Button>
-                    </div>
-                    <span className="text-sm font-bold text-gray-900 mt-1">دوربین</span>
-                  </div>
-
                   {/* Gallery */}
                   <div className="flex flex-col items-center">
-                    <div className="p-[2.5px] rounded-2xl bg-gradient-to-br from-purple-600 via-purple-800 to-black">
-                      <Button
-                        variant="ghost"
-                        className="flex flex-col w-20 h-20 rounded-2xl gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
-                      >
-                        <Image className="!w-10 !h-10 text-white" />
-                      </Button>
-                    </div>
-                    <span className="text-sm font-bold text-gray-900 mt-1">گالری</span>
+                    <Button
+                      variant="outline"
+                      className="flex flex-col w-20 h-20 rounded-2xl border-2 border-gray-900 items-center justify-center hover:bg-gray-50 transition p-0 bg-white"
+                    >
+                      <Image className="!w-10 !h-10 text-gray-900" />
+                    </Button>
+                    <span className="text-sm font-bold text-gray-900 mt-1">
+                      گالری
+                    </span>
+                  </div>
+
+                  {/* Camera */}
+                  <div className="flex flex-col items-center">
+                    <Button
+                      variant="outline"
+                      className="flex flex-col w-20 h-20 rounded-2xl border-2 border-gray-900 items-center justify-center hover:bg-gray-50 transition p-0 bg-white"
+                    >
+                      <Camera className="!w-10 !h-10 text-gray-900" />
+                    </Button>
+                    <span className="text-sm font-bold text-gray-900 mt-1">
+                      دوربین
+                    </span>
                   </div>
                 </div>
               </DrawerHeader>

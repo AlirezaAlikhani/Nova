@@ -85,6 +85,7 @@ export const FinalizePage = () => {
             <Button
               variant="ghost"
               className="flex flex-col w-28 h-28 rounded-full gap-3 bg-black group items-center justify-center hover:bg-gray-900 transition p-0"
+              onClick={() => navigate("/loading", { state: { fromFinalize: true } })}
             >
               <Scissors className="text-white !h-14 !w-14" strokeWidth={1.4} />
             </Button>

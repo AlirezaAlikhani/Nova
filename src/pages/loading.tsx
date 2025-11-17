@@ -5,14 +5,25 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 export const Loading = () => {
   const navigate = useNavigate();
-  const location = useLocation() as { state?: { file?: File } };
+  const location = useLocation() as {
+    state?: { file?: File; fromHome?: boolean; fromFinalize?: boolean };
+  };
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      navigate("/accsept", { state: { file: location.state?.file } });
+      if (location.state?.fromHome || location.state?.fromFinalize) {
+        navigate("/result");
+      } else {
+        navigate("/accsept", { state: { file: location.state?.file } });
+      }
     }, 1200);
     return () => clearTimeout(timeout);
-  }, [location.state?.file, navigate]);
+  }, [
+    location.state?.file,
+    location.state?.fromHome,
+    location.state?.fromFinalize,
+    navigate,
+  ]);
 
   return (
     <div

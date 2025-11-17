@@ -8,6 +8,7 @@ import { Loading } from "./pages/loading";
 import { Accsept } from "./pages/acceptImage";
 import HairStyleSelection from "./pages/hairStyleSelection";
 import HairStyleCategories from "./pages/hairCategories";
+import HairStyleDetails from "./pages/hairStyleDetails";
 import FinalizePage from "./pages/finalize";
 import ResultPage from "./pages/result";
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/accsept" element={<Accsept />} />
         <Route path="/hair-style" element={<HairStyleSelection />} />
         <Route path="/categories" element={<HairStyleCategories />} />
+        <Route path="/hair-style-details" element={<HairStyleDetails />} />
         <Route path="/finalize" element={<FinalizePage />} />
         <Route path="/result" element={<ResultPage />} />
       </Routes>

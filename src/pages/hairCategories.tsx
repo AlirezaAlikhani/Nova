@@ -1,12 +1,8 @@
-import { ChevronLeft, Upload, RotateCcw } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { ChevronLeft, RotateCcw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-// Removed unused Drawer imports
 
 export const HairStyleCategories = () => {
   const navigate = useNavigate();
-  const [selectedId, setSelectedId] = useState<number | null>(null);
 
   const hairstyles = [
     { id: 1, name: "Middle Fade" },
@@ -20,72 +16,56 @@ export const HairStyleCategories = () => {
   return (
     <div
       dir="rtl"
-      className="bg-white min-h-screen flex flex-col font-sans pt-4 pb-8 overflow-hidden fixed inset-0 px-6"
+      className="bg-white h-[100dvh] p-10 flex flex-col font-sans overflow-hidden fixed inset-0"
     >
       {/* Header */}
-      <header className="flex items-center justify-between mb-4">
+      <header className="flex items-center justify-between py-3">
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center bg-white gap-1 text-gray-900"
+          className="flex items-center bg-white gap-1 text-gray-900 px-2 py-1 rounded-xl"
         >
           <ChevronLeft className="w-5 h-5" />
           <span className="text-base font-medium">بازگشت</span>
         </button>
-        <button className="flex bg-white items-center gap-1 text-gray-900">
+        <button className="flex bg-white items-center gap-1 text-gray-900 px-2 py-1 rounded-xl">
           <span className="text-base font-semibold">خروج</span>
           <RotateCcw className="w-5 h-5" />
         </button>
       </header>
 
-      {/* Title */}
-      <h1 className="text-center text-2xl font-bold text-gray-900 mb-6">
-        استایل
-      </h1>
+      {/* Main */}
+      <main className="flex-1 bg-white rounded-3xl flex flex-col overflow-hidden">
+        {/* Title */}
+        <div className="px-4 pt-4 pb-2">
+          <h1 className="text-center text-2xl font-bold text-gray-900">
+            استایل
+          </h1>
+        </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-2 gap-4 mb-8">
-        {hairstyles.map((style) => (
-          <div
-            key={style.id}
-            role="button"
-            tabIndex={0}
-            onClick={() => setSelectedId(style.id)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") setSelectedId(style.id);
-            }}
-            className={`relative bg-white rounded-3xl p-4 shadow-[0_6px_18px_rgba(0,0,0,0.06)] border flex flex-col items-center cursor-pointer transition-all ${
-              selectedId === style.id
-                ? "border-gray-300 ring-2 ring-gray-900/60"
-                : "border-gray-100 hover:border-gray-200"
-            }`}
-          >
-            <div className="w-28 h-28 bg-gray-50 border border-gray-200 rounded-2xl mb-3 flex items-center justify-center">
-              <span className="text-gray-400 text-xs">بدون عکس</span>
-            </div>
-            <span className="text-sm font-medium text-gray-900">
-              {style.name}
-            </span>
+        {/* Scrollable Grid */}
+        <div className="flex-1 overflow-y-auto px-4 pb-5">
+          <div className="grid grid-cols-2 gap-4 pt-4">
+            {hairstyles.map((style) => (
+              <button
+                key={style.id}
+                onClick={() =>
+                  navigate("/hair-style-details", {
+                    state: { categoryName: style.name },
+                  })
+                }
+                className="flex flex-col items-center rounded-3xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-all px-4 pt-5 pb-4 border border-transparent hover:border-gray-200"
+              >
+                <div className="w-24 h-24 mb-3 rounded-2xl flex items-center justify-center overflow-hidden bg-gray-50 border border-gray-200">
+                  <span className="text-gray-400 text-xs">بدون عکس</span>
+                </div>
+                <span className="text-sm font-semibold text-gray-900">
+                  {style.name}
+                </span>
+              </button>
+            ))}
           </div>
-        ))}
-      </div>
-
-      {/* Bottom Action (Drawer) */}
-
-      <div className="mt-10">
-        <Button
-          disabled={!selectedId}
-          className={`w-full mt-2 py-5 rounded-2xl text-lg font-semibold flex items-center justify-center gap-3 ${
-            selectedId
-              ? "bg-black hover:bg-gray-900 text-white"
-              : "bg-gray-200 text-gray-500 cursor-not-allowed"
-          }`}
-        >
-          <span>انتخاب</span>
-          <div className="w-7 h-7 rounded-lg bg-white/15 flex items-center justify-center">
-            <Upload className="w-4 h-4 text-white" />
-          </div>
-        </Button>
-      </div>
+        </div>
+      </main>
     </div>
   );
 };

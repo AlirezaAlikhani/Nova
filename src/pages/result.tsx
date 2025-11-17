@@ -14,45 +14,45 @@ export const ResultPage = () => {
       className="bg-white h-[100dvh] flex flex-col font-sans fixed inset-0 overflow-y-auto pt-4 pb-8 px-6"
     >
       {/* Title Section */}
-      <div className="text-center m-10 mb-4">
+      <div className="text-center mt-6 mb-4">
         <h1 className="text-3xl font-extrabold text-gray-900 mb-2">
           عکس آماده شد !
         </h1>
         <p className="text-gray-600 text-sm mb-1">
           در استایل جدید اینگونه دیده میشوید
         </p>
-        <p className="text-gray-500 text-xs">بازكات - ميدل فید</p>
+        <p className="text-gray-500 text-xs">بازکات - میدل فید</p>
       </div>
 
       {/* Before/After Toggle */}
-      <div className="flex items-center justify-center mb-6">
-        <div className="flex bg-gray-100 rounded-xl p-1 gap-1">
-          <button
-            onClick={() => setViewMode("before")}
-            className={`px-6 py-2 rounded-lg text-sm font-medium transition ${
-              viewMode === "before"
-                ? "bg-white text-gray-900 shadow-sm"
-                : "text-gray-600"
-            }`}
-          >
-            قبل
-          </button>
-          <button
-            onClick={() => setViewMode("after")}
-            className={`px-6 py-2 rounded-lg text-sm font-medium transition ${
-              viewMode === "after"
-                ? "bg-black text-white shadow-sm"
-                : "text-gray-600"
-            }`}
-          >
-            بعد
-          </button>
-        </div>
+      {/* Before / After Toggle */}
+      <div className="w-full bg-[#e7e7e7] rounded-3xl p-2 flex items-center">
+        <button
+          onClick={() => setViewMode("before")}
+          className={`flex-1 py-3 text-lg font-semibold rounded-2xl transition ${
+            viewMode === "before"
+              ? "bg-black text-white"
+              : "text-black bg-[#e7e7e7]"
+          }`}
+        >
+          قبل
+        </button>
+
+        <button
+          onClick={() => setViewMode("after")}
+          className={`flex-1 py-3 text-lg font-semibold rounded-2xl transition ${
+            viewMode === "after"
+              ? "bg-black text-white"
+              : "text-black bg-[#e7e7e7]"
+          }`}
+        >
+          بعد
+        </button>
       </div>
 
       {/* Main Image */}
-      <div className="w-full mb-6">
-        <div className="w-3/4 mx-auto aspect-[4/4] rounded-3xl overflow-hidden shadow-lg border border-gray-200">
+      <div className="w-full mb-6 flex justify-center">
+        <div className="w-[85%] aspect-square rounded-3xl overflow-hidden shadow-lg border border-gray-200">
           <img
             src={
               viewMode === "before"
@@ -65,74 +65,39 @@ export const ResultPage = () => {
         </div>
       </div>
 
-      {/* Action Icons */}
-      <div className="flex flex-row-reverse items-center gap-0">
+      {/* Actions */}
+      {/* Actions - چپ‌چین، بدون بک‌گراند، کنار هم چسبیده */}
+      <div className="flex items-center justify-end mt-4">
         <button
-          onClick={() => {
-            // Save functionality
-          }}
-          className="flex flex-col bg-white items-center gap-1 focus:outline-none focus:border-none"
-          tabIndex={0}
+          onClick={() => {}}
+          className="flex flex-col items-center p-2 bg-transparent focus:outline-none"
         >
-          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-200 transition shadow-none">
-            <Download className="w-5 h-5 text-gray-700" />
-          </div>
-          <span className="text-xs text-gray-600">Save</span>
+          <Download className="w-6 h-6 text-gray-500" />
+          <span className="text-xs text-gray-500 mt-1">Save</span>
         </button>
 
         <button
-          onClick={() => {
-            // Share functionality
-          }}
-          className="flex flex-col bg-white items-center gap-1 focus:outline-none focus:border-none"
-          tabIndex={0}
+          onClick={() => {}}
+          className="flex flex-col items-center p-2 bg-transparent -ml-2 focus:outline-none"
         >
-          <div className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-200 transition shadow-none">
-            <Share2 className="w-5 h-5 text-gray-700" />
-          </div>
-          <span className="text-xs text-gray-600">Share</span>
+          <Share2 className="w-6 h-6 text-gray-500" />
+          <span className="text-xs text-gray-500 mt-1">Share</span>
         </button>
 
         <button
-          onClick={() => setLiked(liked === true ? null : true)}
-          className="flex flex-col bg-white items-center gap-1 focus:outline-none focus:border-none"
-          tabIndex={0}
+          onClick={() => {}}
+          className="flex flex-col items-center p-2 bg-transparent -ml-2 focus:outline-none"
         >
-          <div
-            className={`w-10 h-10 bg-white rounded-full flex items-center justify-center transition shadow-none ${
-              liked === true
-                ? "bg-green-100 hover:bg-green-200"
-                : "hover:bg-gray-200"
-            }`}
-          >
-            <ThumbsUp
-              className={`w-5 h-5 ${
-                liked === true ? "text-green-600" : "text-gray-700"
-              }`}
-            />
-          </div>
-          <span className="text-xs text-gray-600">Like</span>
+          <ThumbsUp className="w-6 h-6 text-gray-500" />
+          <span className="text-xs text-gray-500 mt-1">Like</span>
         </button>
 
         <button
-          onClick={() => setLiked(liked === false ? null : false)}
-          className="flex bg-white flex-col items-center gap-1 focus:outline-none focus:border-none"
-          tabIndex={0}
+          onClick={() => {}}
+          className="flex flex-col items-center p-2 bg-transparent -ml-2 focus:outline-none"
         >
-          <div
-            className={`w-10 h-10 bg-white rounded-full flex items-center justify-center transition shadow-none ${
-              liked === false
-                ? "bg-red-100 hover:bg-red-200"
-                : "hover:bg-gray-200"
-            }`}
-          >
-            <ThumbsDown
-              className={`w-5 h-5  ${
-                liked === false ? "text-red-600" : "text-gray-700"
-              }`}
-            />
-          </div>
-          <span className="text-xs text-gray-600">Dislike</span>
+          <ThumbsDown className="w-6 h-6 text-gray-500" />
+          <span className="text-xs text-gray-500 mt-1">Dislike</span>
         </button>
       </div>
 
@@ -140,13 +105,14 @@ export const ResultPage = () => {
       <div className="flex gap-4 mt-auto">
         <Button
           variant="outline"
-          className="flex-1 py-4 text-lg font-semibold border-2 border-gray-900"
+          className="flex-1 py-4 text-lg font-semibold border-2 border-gray-900 rounded-xl"
           onClick={() => navigate("/home-screen")}
         >
           خروج
         </Button>
+
         <Button
-          className="flex-1 py-4 text-lg font-semibold bg-black hover:bg-gray-900 text-white"
+          className="flex-1 py-4 text-lg font-semibold bg-black text-white rounded-xl hover:bg-gray-900"
           onClick={() => navigate("/finalize")}
         >
           امتحان مجدد

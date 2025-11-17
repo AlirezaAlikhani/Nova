@@ -74,35 +74,31 @@ export const Accsept = () => {
             <DrawerContent>
               <div className="mx-auto w-full max-w-sm">
                 <DrawerHeader>
-                  <DrawerTitle>ارسال فایل</DrawerTitle>
+                  <DrawerTitle className="text-center">ارسال فایل</DrawerTitle>
                   <div className="flex justify-center gap-12 mt-6">
-                    {/* Camera */}
+                    {/* Gallery */}
                     <div className="flex flex-col items-center">
-                      <div className="p-[2.5px] rounded-2xl bg-gradient-to-br from-purple-600 via-purple-800 to-black">
-                        <Button
-                          variant="ghost"
-                          className="flex flex-col w-20 h-20 rounded-2xl gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
-                        >
-                          <Camera className="!w-10 !h-10 text-white" />
-                        </Button>
-                      </div>
+                      <Button
+                        variant="outline"
+                        className="flex flex-col w-20 h-20 rounded-2xl border-2 border-gray-900 items-center justify-center hover:bg-gray-50 transition p-0 bg-white"
+                      >
+                        <Image className="!w-10 !h-10 text-gray-900" />
+                      </Button>
                       <span className="text-sm font-bold text-gray-900 mt-1">
-                        دوربین
+                        گالری
                       </span>
                     </div>
 
-                    {/* Gallery */}
+                    {/* Camera */}
                     <div className="flex flex-col items-center">
-                      <div className="p-[2.5px] rounded-2xl bg-gradient-to-br from-purple-600 via-purple-800 to-black">
-                        <Button
-                          variant="ghost"
-                          className="flex flex-col w-20 h-20 rounded-2xl gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
-                        >
-                          <Image className="!w-10 !h-10 text-white" />
-                        </Button>
-                      </div>
+                      <Button
+                        variant="outline"
+                        className="flex flex-col w-20 h-20 rounded-2xl border-2 border-gray-900 items-center justify-center hover:bg-gray-50 transition p-0 bg-white"
+                      >
+                        <Camera className="!w-10 !h-10 text-gray-900" />
+                      </Button>
                       <span className="text-sm font-bold text-gray-900 mt-1">
-                        گالری
+                        دوربین
                       </span>
                     </div>
                   </div>
