@@ -26,10 +26,10 @@ export const ResultPage = () => {
 
       {/* Before/After Toggle */}
       {/* Before / After Toggle */}
-      <div className="w-full bg-[#e7e7e7] rounded-3xl p-2 flex items-center">
+      <div className="w-full mb-4 bg-[#e7e7e7] rounded-xl py-[7px] flex items-center">
         <button
           onClick={() => setViewMode("before")}
-          className={`flex-1 py-3 text-lg font-semibold rounded-2xl transition ${
+          className={`flex-1 p-1 text-lg font-semibold rounded-xl mx-1 transition ${
             viewMode === "before"
               ? "bg-black text-white"
               : "text-black bg-[#e7e7e7]"
@@ -40,7 +40,7 @@ export const ResultPage = () => {
 
         <button
           onClick={() => setViewMode("after")}
-          className={`flex-1 py-3 text-lg font-semibold rounded-2xl transition ${
+          className={`flex-1 p-1 text-lg font-semibold rounded-xl mx-1 transition ${
             viewMode === "after"
               ? "bg-black text-white"
               : "text-black bg-[#e7e7e7]"
@@ -105,14 +105,14 @@ export const ResultPage = () => {
       <div className="flex gap-4 mt-auto">
         <Button
           variant="outline"
-          className="flex-1 py-4 text-lg font-semibold border-2 border-gray-900 rounded-xl"
+          className="flex-1 py-4 text-lg font-semibold border-2 border-gray-900 "
           onClick={() => navigate("/home-screen")}
         >
           خروج
         </Button>
 
         <Button
-          className="flex-1 py-4 text-lg font-semibold bg-black text-white rounded-xl hover:bg-gray-900"
+          className="flex-1 py-4 text-lg font-semibold bg-black text-white  hover:bg-gray-900"
           onClick={() => navigate("/finalize")}
         >
           امتحان مجدد

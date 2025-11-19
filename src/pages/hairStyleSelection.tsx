@@ -95,25 +95,25 @@ export const HairStyleSelection = () => {
         </button>
       </header>
       {/* Main */}
-      <main className="flex-1 bg-white rounded-3xl flex flex-col overflow-hidden">
+      <main className="flex-1 bg-white flex flex-col overflow-hidden">
         {/* Tabs */}
-        <div className="flex gap-3 rounded-2xl p-2 mb-2 sticky top-0 bg-white z-10">
+        <div className="w-full mb-4 bg-[#e7e7e7] rounded-xl py-[7px] flex items-center">
           <button
             onClick={() => setActiveTab("dashboard")}
-            className={`flex-1 py-2 rounded-xl text-sm font-semibold transition ${
+            className={`flex-1 p-1 text-lg font-semibold rounded-xl mx-1 transition ${
               activeTab === "dashboard"
-                ? "bg-white text-gray-900 shadow-sm"
-                : "bg-white text-gray-600"
+                ? "bg-black text-white"
+                : "text-black bg-[#e7e7e7]"
             }`}
           >
             داشبورد
           </button>
           <button
             onClick={() => setActiveTab("categories")}
-            className={`flex-1 py-2 rounded-xl text-sm font-semibold transition ${
+            className={`flex-1 p-1 text-lg font-semibold rounded-xl mx-1 transition ${
               activeTab === "categories"
-                ? "bg-black text-white shadow-sm"
-                : "bg-white text-gray-600"
+                ? "bg-black text-white"
+                : "text-black bg-[#e7e7e7]"
             }`}
           >
             دسته بندی ها
@@ -132,11 +132,20 @@ export const HairStyleSelection = () => {
                 (style) => (
                   <button
                     key={style.id}
-                    onClick={() => setSelectedId(style.id)}
-                    className={`flex flex-col items-center rounded-3xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-all px-4 pt-5 pb-4 ${
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setSelectedId(style.id);
+                      if (activeTab === "categories") {
+                        navigate("/hair-style-details", {
+                          state: { categoryName: style.name },
+                        });
+                      }
+                    }}
+                    className={`flex flex-col items-center rounded-3xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-all px-4 pt-5 pb-4 cursor-pointer ${
                       selectedId === style.id
                         ? "border-2 border-black"
-                        : "border border-transparent"
+                        : "border border-transparent hover:border-gray-200"
                     }`}
                   >
                     <div className="w-24 h-24 mb-3 rounded-2xl flex items-center justify-center overflow-hidden">
@@ -165,12 +174,7 @@ export const HairStyleSelection = () => {
         <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
           <DrawerTrigger asChild>
             <Button
-              disabled={!selectedId}
-              className={`w-full mt-3 py-4 rounded-2xl text-base font-semibold flex items-center justify-center gap-3 ${
-                selectedId
-                  ? "bg-black hover:bg-gray-900 text-white"
-                  : "bg-gray-200 text-gray-500 cursor-not-allowed"
-              }`}
+              className={`w-full mt-3 py-4 text-base font-semibold flex items-center justify-center gap-3`}
               onClick={() => {
                 if (!selectedId) return;
                 setDrawerOpen(true);
@@ -221,7 +225,7 @@ export const HairStyleSelection = () => {
       ) : (
         <Button
           disabled={!selectedId}
-          className={`w-full mt-3 py-4 text-base font-semibold flex items-center justify-center rounded-2xl ${
+          className={`w-full mt-3 py-4 text-base font-semibold flex items-center justify-center${
             selectedId
               ? "bg-black hover:bg-gray-900 text-white"
               : "bg-gray-200 text-gray-500 cursor-not-allowed"

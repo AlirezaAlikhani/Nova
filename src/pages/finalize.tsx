@@ -1,4 +1,11 @@
-import { ChevronLeft, RotateCcw, ArrowRight, Scissors, Camera, User2Icon } from "lucide-react";
+import {
+  ChevronLeft,
+  RotateCcw,
+  ArrowRight,
+  Scissors,
+  Camera,
+  User2Icon,
+} from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -13,15 +20,15 @@ export const FinalizePage = () => {
       className="bg-white h-[100dvh] flex flex-col font-sans fixed inset-0 overflow-y-auto pt-4 pb-10 px-6"
     >
       {/* Header */}
-      <header className="flex items-center justify-between mb-4">
+      <header className="flex mb-9 items-center justify-between py-3">
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-1 text-gray-900"
+          className="flex items-center bg-white gap-1 text-gray-900 px-2 py-1 rounded-xl"
         >
           <ChevronLeft className="w-5 h-5" />
           <span className="text-base font-medium">بازگشت</span>
         </button>
-        <button className="flex items-center gap-1 text-gray-900">
+        <button className="flex bg-white items-center gap-1 text-gray-900 px-2 py-1 rounded-xl">
           <span className="text-base font-semibold">خروج</span>
           <RotateCcw className="w-5 h-5" />
         </button>
@@ -81,11 +88,13 @@ export const FinalizePage = () => {
 
         {/* Trim - Center & Bigger */}
         <div className="flex flex-col items-center transform -translate-y-6 sm:-translate-y-10">
-          <div className="p-[5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
+          <div className="p-[11px] rounded-full bg-gradient-to-br from-purple-900 via-purple-900 to-black">
             <Button
               variant="ghost"
               className="flex flex-col w-28 h-28 rounded-full gap-3 bg-black group items-center justify-center hover:bg-gray-900 transition p-0"
-              onClick={() => navigate("/loading", { state: { fromFinalize: true } })}
+              onClick={() =>
+                navigate("/loading", { state: { fromFinalize: true } })
+              }
             >
               <Scissors className="text-white !h-14 !w-14" strokeWidth={1.4} />
             </Button>
@@ -103,9 +112,7 @@ export const FinalizePage = () => {
               <Camera className="!w-9 !h-9 text-black" />
             </Button>
           </div>
-          <span className="text-sm font-bold text-gray-900 mt-1">
-           جدید
-          </span>
+          <span className="text-sm font-bold text-gray-900 mt-1">جدید</span>
         </div>
       </div>
       <div className="h-8"></div>
