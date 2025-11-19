@@ -6,8 +6,7 @@ import { useState } from "react";
 export const ResultPage = () => {
   const navigate = useNavigate();
   const [viewMode, setViewMode] = useState<"before" | "after">("before");
-  const [liked, setLiked] = useState<boolean | null>(null);
-
+  
   return (
     <div
       dir="rtl"
