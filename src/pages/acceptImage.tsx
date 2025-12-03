@@ -13,21 +13,26 @@ import {
 
 export const Accsept = () => {
   const navigate = useNavigate();
-  const location = useLocation() as { state?: { file?: File } };
+  const location = useLocation() as {
+    state?: { file?: File; imageUrl?: string };
+  };
   const selectedFile = location.state?.file;
+  const imageUrl = location.state?.imageUrl;
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!selectedFile) {
+    if (imageUrl) {
+      setPreviewUrl(imageUrl);
+    } else if (selectedFile) {
+      const url = URL.createObjectURL(selectedFile);
+      setPreviewUrl(url);
+      return () => {
+        URL.revokeObjectURL(url);
+      };
+    } else {
       setPreviewUrl(null);
-      return;
     }
-    const url = URL.createObjectURL(selectedFile);
-    setPreviewUrl(url);
-    return () => {
-      URL.revokeObjectURL(url);
-    };
-  }, [selectedFile]);
+  }, [selectedFile, imageUrl]);
 
   return (
     <div

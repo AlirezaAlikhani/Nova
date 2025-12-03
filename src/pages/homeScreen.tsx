@@ -12,12 +12,11 @@ import LoggingImage from "../assets/images/Logging.jpg";
 import { Button } from "@/components/ui/Button";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import barberLottieUrl from "../assets/images/character.lottie?url";
 
 export const HomeScreen = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [logoutModalOpen, setLogoutModalOpen] = useState(false);
 
   return (
     <div
@@ -123,23 +122,23 @@ export const HomeScreen = () => {
             menuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="bg-gradient-to-br from-[#221056] via-[#3c0d6f] to-[#020923] text-white p-4 relative">
+          <div className="bg-gradient-to-br from-[#000000] via-[#160628] to-[#000000] text-white p-4 relative">
             <div className="flex items-center justify-between text-sm">
               <div>
+                <div className="absolute top-6 left-6">
+                  <Scissors className="text-white w-7 h-7" strokeWidth={1.6} />
+                </div>
                 <p className="text-xs uppercase tracking-[0.15em] text-white/80">
                   Credits :
                 </p>
                 <p className="text-5xl font-extrabold mt-1">150</p>
               </div>
-              <div className="absolute top-6 left-6">
-                <Scissors className="text-white w-7 h-7" strokeWidth={1.6} />
-              </div>
             </div>
 
             <div className="flex items-center justify-between text-sm mt-4">
               <div>
-                <span className="text-white/80">Ends date :</span>
-                <span className="font-semibold">09/25</span>
+                {/* <span className="text-white/80">Ends date :</span>   */}
+                {/* <span className="font-semibold">09/25</span> */}
               </div>
               <div>
                 <p className="text-lg font-semibold">علیرضا رضایی</p>
@@ -155,7 +154,13 @@ export const HomeScreen = () => {
               </div>
             </button>
 
-            <button className="flex bg-white items-center justify-between py-4 border-b border-gray-100 text-lg font-semibold text-gray-900 hover:text-black transition-colors">
+            <button
+              onClick={() => {
+                setMenuOpen(false);
+                navigate("/dashboard");
+              }}
+              className="flex bg-white items-center justify-between py-4 border-b border-gray-100 text-lg font-semibold text-gray-900 hover:text-black transition-colors"
+            >
               <div className="flex items-center gap-3">
                 <LayoutDashboard className="w-5 h-5" />
                 <span>داشبورد</span>
@@ -176,7 +181,13 @@ export const HomeScreen = () => {
               </div>
             </button>
 
-            <button className="flex bg-white items-center justify-between py-4 text-lg font-semibold text-red-600 hover:text-red-700 transition-colors">
+            <button
+              onClick={() => {
+                setMenuOpen(false);
+                setLogoutModalOpen(true);
+              }}
+              className="flex bg-white items-center justify-between py-4 text-lg font-semibold text-red-600 hover:text-red-700 transition-colors"
+            >
               <div className="flex items-center gap-3">
                 <LogOut className="w-5 h-5" />
                 <span>خروج از حساب کاربری</span>
@@ -185,6 +196,40 @@ export const HomeScreen = () => {
           </div>
         </div>
       </div>
+
+      {/* Logout Confirmation Modal */}
+      {logoutModalOpen && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center">
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setLogoutModalOpen(false)}
+          />
+          <div className="relative bg-white rounded-3xl p-6 mx-4 max-w-sm w-full shadow-2xl">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2 text-center">
+              خروج از حساب کاربری
+            </h2>
+            <p className="text-gray-600 text-center mb-6">مطمئن هستید؟</p>
+            <div className="flex gap-4">
+              <Button
+                variant="outline"
+                className="flex-1 py-3 text-lg font-semibold border-2 border-gray-900"
+                onClick={() => setLogoutModalOpen(false)}
+              >
+                بازگشت
+              </Button>
+              <Button
+                className="flex-1 py-3 text-lg font-semibold bg-black text-white hover:bg-gray-900"
+                onClick={() => {
+                  // Handle logout logic here
+                  navigate("/login");
+                }}
+              >
+                بله
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

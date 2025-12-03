@@ -12,6 +12,7 @@ import HairStyleCategories from "./pages/hairCategories";
 import HairStyleDetails from "./pages/hairStyleDetails";
 import FinalizePage from "./pages/finalize";
 import ResultPage from "./pages/result";
+import Dashboard from "./pages/dashboard";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/hair-style-details" element={<HairStyleDetails />} />
         <Route path="/finalize" element={<FinalizePage />} />
         <Route path="/result" element={<ResultPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );
