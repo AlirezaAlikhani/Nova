@@ -1,8 +1,9 @@
 import { ChevronRight, Camera, Image } from "lucide-react";
-import LoggingImage from "../assets/images/Logging.jpg";
 import { Button } from "@/components/ui/Button";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import barberLottieUrl from "../assets/images/character.lottie?url";
 
 export const ChooseImageScreen = () => {
   const navigate = useNavigate();
@@ -45,12 +46,13 @@ export const ChooseImageScreen = () => {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-center px-6 space-y-8">
-        {/* Barber Illustration (SVG) */}
+        {/* Barber Illustration (Lottie) */}
         <div className="w-72 h-72">
-          <img
-            src={LoggingImage}
-            alt="Logging"
-            className="w-full h-full object-cover rounded-xl"
+          <DotLottieReact
+            src={barberLottieUrl}
+            loop
+            autoplay
+            className="w-full h-full"
           />
         </div>
 

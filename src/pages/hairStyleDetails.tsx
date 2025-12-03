@@ -122,8 +122,8 @@ export const HairStyleDetails = () => {
 
   return (
     <div
-      dir="rtl"
-      className="bg-white h-[100dvh] p-10 flex flex-col font-sans overflow-hidden fixed inset-0"
+      dir="ltr"
+      className="bg-white h-[100dvh] p-5 flex flex-col font-sans overflow-hidden fixed inset-0"
     >
       {/* Header */}
       <header className="flex items-center justify-between py-3">
@@ -187,7 +187,7 @@ export const HairStyleDetails = () => {
         disabled={!selectedId}
         onClick={() => {
           if (!selectedId) return;
-          navigate("/finalize");
+          navigate("/choose-image");
         }}
         className={`w-full mt-3 py-4 rounded-2xl text-base font-semibold flex items-center justify-center ${
           selectedId

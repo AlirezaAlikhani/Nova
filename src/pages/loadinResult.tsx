@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import barberLottieUrl from "../assets/images/chair.lottie?url";
+import barberLottieUrl from "../assets/images/mozer.lottie?url";
 
-export const Loading = () => {
+export const LoadingResult = () => {
   const navigate = useNavigate();
   const location = useLocation() as {
-    state?: { file?: File; fromHome?: boolean; fromFinalize?: boolean };
+    state?: {
+      file?: File;
+      fromHome?: boolean;
+      fromFinalize?: boolean;
+      beforeImageUrl?: string | null;
+    };
   };
   const [filledCount, setFilledCount] = useState(0);
 
@@ -28,7 +33,12 @@ export const Loading = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (location.state?.fromHome || location.state?.fromFinalize) {
-        navigate("/result");
+        navigate("/result", {
+          state: {
+            beforeImageUrl: location.state?.beforeImageUrl,
+            file: location.state?.file,
+          },
+        });
       } else {
         navigate("/accsept", { state: { file: location.state?.file } });
       }
@@ -38,6 +48,7 @@ export const Loading = () => {
     location.state?.file,
     location.state?.fromHome,
     location.state?.fromFinalize,
+    location.state?.beforeImageUrl,
     navigate,
   ]);
 
@@ -69,7 +80,10 @@ export const Loading = () => {
             />
           ))}
         </div>
-        <h5 className="text-black text-sm font-bold mb-3">در حال فرستادن</h5>
+        <h2 className="text-black text-sm font-bold mb-3">در حال فرستادن</h2>
+        <h4 className="text-gray-400 text-sm font-bold mb-1">
+          ما در حال بررسی درخواست شما و اعمال تغییرات هستیم
+        </h4>
       </main>
 
       {/* Safe Area Bottom */}

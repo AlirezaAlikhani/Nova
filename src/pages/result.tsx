@@ -1,12 +1,44 @@
 import { Download, Share2, ThumbsUp, ThumbsDown } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import testAfterImage from "../assets/images/carchter.png";
 
 export const ResultPage = () => {
   const navigate = useNavigate();
-  const [viewMode, setViewMode] = useState<"before" | "after">("before");
-  
+  const location = useLocation() as {
+    state?: { beforeImageUrl?: string; file?: File };
+  };
+  const [viewMode, setViewMode] = useState<"before" | "after">("after");
+  const [beforeImageUrl, setBeforeImageUrl] = useState<string | null>(null);
+  const [isLiked, setIsLiked] = useState(false);
+  const [isDisliked, setIsDisliked] = useState(false);
+
+  useEffect(() => {
+    // Get before image from state or file
+    const loadBeforeImage = async () => {
+      if (location.state?.beforeImageUrl) {
+        // If we have a URL string (base64 or blob URL)
+        setBeforeImageUrl(location.state.beforeImageUrl);
+      } else if (location.state?.file) {
+        // If we have a File object, create a blob URL
+        const url = URL.createObjectURL(location.state.file);
+        setBeforeImageUrl(url);
+        return () => {
+          URL.revokeObjectURL(url);
+        };
+      } else {
+        // Try to get from localStorage as fallback
+        const savedImage = localStorage.getItem("beforeImage");
+        if (savedImage) {
+          setBeforeImageUrl(savedImage);
+        }
+      }
+    };
+
+    loadBeforeImage();
+  }, [location.state]);
+
   return (
     <div
       dir="rtl"
@@ -24,19 +56,7 @@ export const ResultPage = () => {
       </div>
 
       {/* Before/After Toggle */}
-      {/* Before / After Toggle */}
       <div className="w-full mb-4 bg-[#e7e7e7] rounded-xl py-[7px] flex items-center">
-        <button
-          onClick={() => setViewMode("before")}
-          className={`flex-1 p-1 text-lg font-semibold rounded-xl mx-1 transition ${
-            viewMode === "before"
-              ? "bg-black text-white"
-              : "text-black bg-[#e7e7e7]"
-          }`}
-        >
-          قبل
-        </button>
-
         <button
           onClick={() => setViewMode("after")}
           className={`flex-1 p-1 text-lg font-semibold rounded-xl mx-1 transition ${
@@ -47,25 +67,47 @@ export const ResultPage = () => {
         >
           بعد
         </button>
+
+        <button
+          onClick={() => setViewMode("before")}
+          className={`flex-1 p-1 text-lg font-semibold rounded-xl mx-1 transition ${
+            viewMode === "before"
+              ? "bg-black text-white"
+              : "text-black bg-[#e7e7e7]"
+          }`}
+        >
+          قبل
+        </button>
       </div>
 
       {/* Main Image */}
-      <div className="w-full mb-6 flex justify-center">
-        <div className="w-[85%] aspect-square rounded-3xl overflow-hidden shadow-lg border border-gray-200">
-          <img
-            src={
-              viewMode === "before"
-                ? "https://images.unsplash.com/photo-1608889175157-6b9b7ddfb4b4?q=80&w=600&auto=format&fit=crop"
-                : "https://images.unsplash.com/photo-1616394584738-909c21d0d5de?q=80&w=600&auto=format&fit=crop"
-            }
-            alt={viewMode === "before" ? "قبل" : "بعد"}
-            className="w-full h-full object-cover"
-          />
+      <div className="w-full h-[450px] mb-6 flex p-10 justify-center">
+        <div className="w-full max-w-md aspect-square rounded-3xl overflow-hidden shadow-lg border border-gray-200">
+          {viewMode === "before" ? (
+            beforeImageUrl ? (
+              <img
+                src={beforeImageUrl}
+                alt="قبل"
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full bg-gray-100 flex items-center justify-center">
+                <span className="text-gray-400 text-sm">
+                  عکس قبل موجود نیست
+                </span>
+              </div>
+            )
+          ) : (
+            <img
+              src={testAfterImage}
+              alt="بعد"
+              className="w-full h-full object-cover"
+            />
+          )}
         </div>
       </div>
 
       {/* Actions */}
-      {/* Actions - چپ‌چین، بدون بک‌گراند، کنار هم چسبیده */}
       <div className="flex items-center justify-end mt-4">
         <button
           onClick={() => {}}
@@ -84,19 +126,51 @@ export const ResultPage = () => {
         </button>
 
         <button
-          onClick={() => {}}
+          onClick={() => {
+            setIsLiked(!isLiked);
+            if (!isLiked) {
+              setIsDisliked(false);
+            }
+          }}
           className="flex flex-col items-center p-2 bg-transparent -ml-2 focus:outline-none"
         >
-          <ThumbsUp className="w-6 h-6 text-gray-500" />
-          <span className="text-xs text-gray-500 mt-1">Like</span>
+          <ThumbsUp
+            className={`w-6 h-6 transition-colors ${
+              isLiked ? "text-black fill-black" : "text-gray-500"
+            }`}
+            fill={isLiked ? "currentColor" : "none"}
+          />
+          <span
+            className={`text-xs mt-1 transition-colors ${
+              isLiked ? "text-black" : "text-gray-500"
+            }`}
+          >
+            Like
+          </span>
         </button>
 
         <button
-          onClick={() => {}}
+          onClick={() => {
+            setIsDisliked(!isDisliked);
+            if (!isDisliked) {
+              setIsLiked(false);
+            }
+          }}
           className="flex flex-col items-center p-2 bg-transparent -ml-2 focus:outline-none"
         >
-          <ThumbsDown className="w-6 h-6 text-gray-500" />
-          <span className="text-xs text-gray-500 mt-1">Dislike</span>
+          <ThumbsDown
+            className={`w-6 h-6 transition-colors ${
+              isDisliked ? "text-black fill-black" : "text-gray-500"
+            }`}
+            fill={isDisliked ? "currentColor" : "none"}
+          />
+          <span
+            className={`text-xs mt-1 transition-colors ${
+              isDisliked ? "text-black" : "text-gray-500"
+            }`}
+          >
+            Dislike
+          </span>
         </button>
       </div>
 

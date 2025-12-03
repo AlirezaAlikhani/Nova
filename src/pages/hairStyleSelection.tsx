@@ -1,7 +1,7 @@
 import { ChevronLeft, Upload, RotateCcw, Camera, Image } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import {
   Drawer,
   DrawerContent,
@@ -27,6 +27,8 @@ export const HairStyleSelection = () => {
     { id: number; name: string; image?: string }[]
   >([]);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const galleryInputRef = useRef<HTMLInputElement | null>(null);
+  const cameraInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     const raw = localStorage.getItem("previousModels");
@@ -38,6 +40,20 @@ export const HairStyleSelection = () => {
       }
     }
   }, []);
+
+  const handlePickFromGallery = () => {
+    galleryInputRef.current?.click();
+  };
+
+  const handleOpenCamera = () => {
+    cameraInputRef.current?.click();
+  };
+
+  const handleFileSelected = (file?: File | null) => {
+    if (!file) return;
+    setDrawerOpen(false);
+    navigate("/accsept", { state: { file } });
+  };
 
   const hairstyles = useMemo(
     () => [
@@ -198,6 +214,7 @@ export const HairStyleSelection = () => {
                     <Button
                       variant="outline"
                       className="flex flex-col w-20 h-20 rounded-2xl border-2 border-gray-900 items-center justify-center hover:bg-gray-50 transition p-0 bg-white"
+                      onClick={handlePickFromGallery}
                     >
                       <Image className="!w-10 !h-10 text-gray-900" />
                     </Button>
@@ -211,6 +228,7 @@ export const HairStyleSelection = () => {
                     <Button
                       variant="outline"
                       className="flex flex-col w-20 h-20 rounded-2xl border-2 border-gray-900 items-center justify-center hover:bg-gray-50 transition p-0 bg-white"
+                      onClick={handleOpenCamera}
                     >
                       <Camera className="!w-10 !h-10 text-gray-900" />
                     </Button>
@@ -219,6 +237,23 @@ export const HairStyleSelection = () => {
                     </span>
                   </div>
                 </div>
+
+                {/* Hidden file inputs */}
+                <input
+                  ref={galleryInputRef}
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={(e) => handleFileSelected(e.target.files?.[0])}
+                />
+                <input
+                  ref={cameraInputRef}
+                  type="file"
+                  accept="image/*"
+                  capture="environment"
+                  className="hidden"
+                  onChange={(e) => handleFileSelected(e.target.files?.[0])}
+                />
               </DrawerHeader>
             </div>
           </DrawerContent>

@@ -5,6 +5,7 @@ import { LoginScreen } from "./pages/login";
 import { ChooseImageScreen } from "./pages/chooseImageScreen";
 import { HomeScreen } from "./pages/homeScreen";
 import { Loading } from "./pages/loading";
+import { LoadingResult } from "./pages/loadinResult";
 import { Accsept } from "./pages/acceptImage";
 import HairStyleSelection from "./pages/hairStyleSelection";
 import HairStyleCategories from "./pages/hairCategories";
@@ -22,6 +23,7 @@ function App() {
         <Route path="/choose-image" element={<ChooseImageScreen />} />
         <Route path="/home-screen" element={<HomeScreen />} />
         <Route path="/loading" element={<Loading />} />
+        <Route path="/loading-result" element={<LoadingResult />} />
         <Route path="/accsept" element={<Accsept />} />
         <Route path="/hair-style" element={<HairStyleSelection />} />
         <Route path="/categories" element={<HairStyleCategories />} />

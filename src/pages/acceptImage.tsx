@@ -55,7 +55,9 @@ export const Accsept = () => {
           {/* تایید دکمه مشکی پر */}
           <Button
             className="w-full text-lg font-semibold py-3 "
-            onClick={() => navigate("/hair-style")}
+            onClick={() =>
+              navigate("/finalize", { state: { file: selectedFile } })
+            }
           >
             تایید
           </Button>

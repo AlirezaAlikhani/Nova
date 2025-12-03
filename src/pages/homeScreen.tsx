@@ -12,6 +12,8 @@ import LoggingImage from "../assets/images/Logging.jpg";
 import { Button } from "@/components/ui/Button";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import barberLottieUrl from "../assets/images/character.lottie?url";
 
 export const HomeScreen = () => {
   const navigate = useNavigate();
