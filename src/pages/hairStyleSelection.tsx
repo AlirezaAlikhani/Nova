@@ -10,6 +10,13 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
+import bazkatImage from "../assets/images/category/baz.jpg";
+import sidePartImage from "../assets/images/category/side.png";
+import mulletImage from "../assets/images/category/molet.jpg";
+import curlyImage from "../assets/images/category/curl.jpg";
+import spikyImage from "../assets/images/category/spagty.png";
+import pompadourImage from "../assets/images/category/pamador.png";
+
 export const HairStyleSelection = () => {
   const navigate = useNavigate();
   const [selectedId, setSelectedId] = useState<number | null>(null);
@@ -37,38 +44,32 @@ export const HairStyleSelection = () => {
       {
         id: 1,
         name: "بازکات",
-        image:
-          "https://res.cloudinary.com/dzjkgjjut/image/upload/v1731490307/haircuts/bazkat.png",
+        image: bazkatImage,
       },
       {
         id: 2,
         name: "ساید پارت",
-        image:
-          "https://res.cloudinary.com/dzjkgjjut/image/upload/v1731490307/haircuts/side-part.png",
+        image: sidePartImage,
       },
       {
         id: 3,
         name: "مولت",
-        image:
-          "https://res.cloudinary.com/dzjkgjjut/image/upload/v1731490307/haircuts/mullet.png",
+        image: mulletImage,
       },
       {
         id: 4,
         name: "فر",
-        image:
-          "https://res.cloudinary.com/dzjkgjjut/image/upload/v1731490307/haircuts/curly.png",
+        image: curlyImage,
       },
       {
         id: 5,
         name: "اسپایکی",
-        image:
-          "https://res.cloudinary.com/dzjkgjjut/image/upload/v1731490307/haircuts/spiky.png",
+        image: spikyImage,
       },
       {
         id: 6,
         name: "پامپادور",
-        image:
-          "https://res.cloudinary.com/dzjkgjjut/image/upload/v1731490307/haircuts/pompadour.png",
+        image: pompadourImage,
       },
     ],
     []
@@ -76,8 +77,8 @@ export const HairStyleSelection = () => {
 
   return (
     <div
-      dir="rtl"
-      className="bg-white h-[100dvh] p-10 flex flex-col font-sans overflow-hidden fixed inset-0"
+      dir="ltr"
+      className="bg-white h-[100dvh] p-5 flex flex-col font-sans overflow-hidden fixed inset-0"
     >
       {" "}
       {/* Header */}

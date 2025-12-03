@@ -3,9 +3,10 @@ import {
   Scissors,
   MessageCircle,
   History,
-  Plus,
-  CheckCircle2,
   Settings,
+  LayoutDashboard,
+  FileText,
+  LogOut,
 } from "lucide-react";
 import LoggingImage from "../assets/images/Logging.jpg";
 import { Button } from "@/components/ui/Button";
@@ -49,15 +50,16 @@ export const HomeScreen = () => {
         <div className="flex !mt-20 items-end justify-center gap-6">
           {/* History */}
           <div className="flex flex-col items-center">
-            <div className="p-[2.5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
+            <div className="p-[2.5px] rounded-full   bg-[#9B9B95]">
               <Button
                 variant="ghost"
-                className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
+                disabled={true}
+                className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-400 group items-center justify-center hover:bg-gray-400 transition p-0 cursor-not-allowed"
               >
                 <History className="!w-8 !h-8 text-white" />
               </Button>
             </div>
-            <span className="text-sm font-bold text-gray-900 mt-1">
+            <span className="text-sm font-bold text-gray-400 mt-1">
               تاریخچه
             </span>
           </div>
@@ -68,7 +70,7 @@ export const HomeScreen = () => {
               <Button
                 variant="ghost"
                 className="flex flex-col w-28 h-28 rounded-full gap-3 bg-black group items-center justify-center hover:bg-gray-900 transition p-0"
-                onClick={() => navigate("/choose-image")}
+                onClick={() => navigate("/hair-style")}
               >
                 <Scissors
                   className="text-white !h-14 !w-14"
@@ -83,16 +85,17 @@ export const HomeScreen = () => {
 
           {/* Contact */}
           <div className="flex flex-col items-center">
-            <div className="p-[2.5px] rounded-full bg-gradient-to-br from-purple-600 via-purple-800 to-black">
+            <div className="p-[2.5px] rounded-full  bg-[#9B9B95]">
               <Button
                 variant="ghost"
-                className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-900 group items-center justify-center hover:bg-gray-800 transition p-0"
+                disabled={true}
+                className="flex flex-col w-20 h-20 rounded-full gap-3 bg-gray-400 group items-center justify-center hover:bg-gray-400 transition p-0 cursor-not-allowed"
               >
                 <MessageCircle className="!w-8 !h-8 text-white" />
               </Button>
             </div>
-            <span className="text-sm font-bold text-gray-900 mt-1">
-              ارتباط با ادمین
+            <span className="text-sm font-bold text-gray-400 mt-1">
+              تاریخچه
             </span>
           </div>
         </div>
@@ -143,25 +146,38 @@ export const HomeScreen = () => {
           </div>
 
           <div className="flex flex-col flex-1 px-6 py-6 gap-1">
-            <button className="flex bg-white items-center justify-between py-4 border-b border-gray-100 text-lg font-semibold text-green-600">
+            <button className="flex bg-white items-center justify-between py-4 border-b border-gray-100 text-lg font-semibold text-gray-900 hover:text-black transition-colors">
               <div className="flex items-center gap-3">
-                <Plus className="w-5 h-5" />
-                <span>افزایش موجودی</span>
-              </div>
-              <span className="text-2xl leading-none">+</span>
-            </button>
-
-            <button className="flex bg-white items-center justify-between py-4 border-b border-gray-100 text-lg font-semibold text-gray-900">
-              <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-5 h-5" />
-                <span>گزارش مشکل فنی</span>
+                <MessageCircle className="w-5 h-5" />
+                <span>ارتباط با ادمین</span>
               </div>
             </button>
 
-            <button className="flex bg-white items-center justify-between py-4 text-lg font-semibold text-gray-900">
+            <button className="flex bg-white items-center justify-between py-4 border-b border-gray-100 text-lg font-semibold text-gray-900 hover:text-black transition-colors">
+              <div className="flex items-center gap-3">
+                <LayoutDashboard className="w-5 h-5" />
+                <span>داشبورد</span>
+              </div>
+            </button>
+
+            <button className="flex bg-white items-center justify-between py-4 border-b border-gray-100 text-lg font-semibold text-gray-900 hover:text-black transition-colors">
+              <div className="flex items-center gap-3">
+                <FileText className="w-5 h-5" />
+                <span>گزارش فنی</span>
+              </div>
+            </button>
+
+            <button className="flex bg-white items-center justify-between py-4 border-b border-gray-100 text-lg font-semibold text-gray-900 hover:text-black transition-colors">
               <div className="flex items-center gap-3">
                 <Settings className="w-5 h-5" />
                 <span>تنظیمات</span>
+              </div>
+            </button>
+
+            <button className="flex bg-white items-center justify-between py-4 text-lg font-semibold text-red-600 hover:text-red-700 transition-colors">
+              <div className="flex items-center gap-3">
+                <LogOut className="w-5 h-5" />
+                <span>خروج از حساب کاربری</span>
               </div>
             </button>
           </div>

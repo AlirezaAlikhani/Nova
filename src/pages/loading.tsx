@@ -1,4 +1,3 @@
-import { LifeLine } from "react-loading-indicators";
 import BarberImage from "../assets/images/barberImage.gif";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -40,7 +39,16 @@ export const Loading = () => {
             className="w-full h-full object-cover rounded-xl"
           />
         </div>
-        <LifeLine color="#020202" size="small" text="" textColor="#000000" />
+        <div className="flex items-center gap-2">
+          {Array.from({ length: 10 }).map((_, index) => (
+            <span
+              key={index}
+              className={`w-6 h-6 rounded-lg border transition-colors ${
+                index < 6 ? "bg-black border-black" : "bg-white border-black"
+              }`}
+            />
+          ))}
+        </div>
         <h5 className="text-black text-sm font-bold mb-3">در حال فرستادن</h5>
       </main>
 
