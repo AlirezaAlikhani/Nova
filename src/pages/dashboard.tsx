@@ -2,7 +2,8 @@ import { ChevronLeft, Camera, Image } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useNavigate } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
-import LoggingImage from "../assets/images/carchter.png";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import barberLottieUrl from "../assets/images/character.lottie";
 
 export const Dashboard = () => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ export const Dashboard = () => {
 
   const handleFileSelected = (file?: File | null) => {
     if (!file) return;
-    
+
     // Convert to base64 and save
     const reader = new FileReader();
     reader.onloadend = () => {
@@ -60,13 +61,13 @@ export const Dashboard = () => {
       className="bg-white h-[100dvh] flex flex-col font-sans overflow-hidden fixed inset-0"
     >
       {/* Header */}
-      <header className="flex items-center px-4 pt-3 pb-2">
+      <header className="flex items-center justify-end px-4 pt-3 pb-2">
         <button
           onClick={() => navigate(-1)}
           className="flex items-center bg-white gap-1 text-gray-900 px-2 py-1 rounded-xl"
         >
-          <ChevronLeft className="w-5 h-5" />
           <span className="text-base font-medium">بازگشت</span>
+          <ChevronLeft className="w-5 h-5" />
         </button>
       </header>
 
@@ -110,11 +111,12 @@ export const Dashboard = () => {
           <>
             {/* Illustration */}
             <div className="flex justify-center mb-6">
-              <div className="w-48 h-48">
-                <img
-                  src={LoggingImage}
-                  alt="Character"
-                  className="w-full h-full object-contain"
+              <div className="w-72 h-72">
+                <DotLottieReact
+                  src={barberLottieUrl}
+                  loop
+                  autoplay
+                  className="w-full h-full"
                 />
               </div>
             </div>
@@ -220,4 +222,3 @@ export const Dashboard = () => {
 };
 
 export default Dashboard;
-

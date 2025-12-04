@@ -2,6 +2,7 @@ import LoggingImage from "../assets/images/Logging.jpg";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/Button";
 
+
 export const FaceChanger = () => {
   const navigate = useNavigate();
 
