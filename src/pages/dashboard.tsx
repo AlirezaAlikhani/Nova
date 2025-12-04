@@ -11,6 +11,13 @@ export const Dashboard = () => {
   const [previousFiles, setPreviousFiles] = useState<
     { id: number; name: string; image: string }[]
   >([]);
+  const [selectedFile, setSelectedFile] = useState<{
+    id: number;
+    name: string;
+    image: string;
+  } | null>(null);
+  const [renameModalOpen, setRenameModalOpen] = useState(false);
+  const [newFileName, setNewFileName] = useState("");
   const galleryInputRef = useRef<HTMLInputElement | null>(null);
   const cameraInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -36,23 +43,34 @@ export const Dashboard = () => {
 
   const handleFileSelected = (file?: File | null) => {
     if (!file) return;
+    navigate("/loading", { state: { file, fromDashboard: true } });
+  };
 
-    // Convert to base64 and save
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      if (reader.result) {
-        const newFile = {
-          id: Date.now(),
-          name: file.name || "عکس جدید",
-          image: reader.result as string,
-        };
-        const updated = [newFile, ...previousFiles];
-        setPreviousFiles(updated);
-        localStorage.setItem("dashboardFiles", JSON.stringify(updated));
-        navigate("/accsept", { state: { file } });
-      }
-    };
-    reader.readAsDataURL(file);
+  const handleDeleteFile = () => {
+    if (!selectedFile) return;
+    const updated = previousFiles.filter((f) => f.id !== selectedFile.id);
+    setPreviousFiles(updated);
+    localStorage.setItem("dashboardFiles", JSON.stringify(updated));
+    setSelectedFile(null);
+  };
+
+  const handleRenameFile = () => {
+    if (!selectedFile || !newFileName.trim()) return;
+    const updated = previousFiles.map((f) =>
+      f.id === selectedFile.id ? { ...f, name: newFileName.trim() } : f
+    );
+    setPreviousFiles(updated);
+    localStorage.setItem("dashboardFiles", JSON.stringify(updated));
+    setSelectedFile(null);
+    setRenameModalOpen(false);
+    setNewFileName("");
+  };
+
+  const openRenameModal = () => {
+    if (selectedFile) {
+      setNewFileName(selectedFile.name);
+      setRenameModalOpen(true);
+    }
   };
 
   return (
@@ -173,29 +191,53 @@ export const Dashboard = () => {
                 هنوز فایلی اضافه نکرده‌اید
               </div>
             ) : (
-              <div className="grid grid-cols-2 gap-4 pb-5">
-                {previousFiles.map((file) => (
-                  <button
-                    key={file.id}
-                    onClick={() => {
-                      // Convert base64 back to File if needed
-                      navigate("/accsept", { state: { imageUrl: file.image } });
-                    }}
-                    className="flex flex-col items-center rounded-3xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-all px-4 pt-5 pb-4 cursor-pointer border border-transparent hover:border-gray-200"
-                  >
-                    <div className="w-24 h-24 mb-3 rounded-2xl flex items-center justify-center overflow-hidden">
-                      <img
-                        src={file.image}
-                        alt={file.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <span className="text-sm font-semibold text-gray-900">
-                      {file.name}
-                    </span>
-                  </button>
-                ))}
-              </div>
+              <>
+                <div className="grid grid-cols-2 gap-4 pb-5">
+                  {previousFiles.map((file) => (
+                    <button
+                      key={file.id}
+                      onClick={() => {
+                        setSelectedFile(file);
+                      }}
+                      className={`flex flex-col items-center rounded-3xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-all px-4 pt-5 pb-4 cursor-pointer ${
+                        selectedFile?.id === file.id
+                          ? "border-2 border-black"
+                          : "border border-transparent hover:border-gray-200"
+                      }`}
+                    >
+                      <div className="w-24 h-24 mb-3 rounded-2xl flex items-center justify-center overflow-hidden">
+                        <img
+                          src={file.image}
+                          alt={file.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <span className="text-sm font-semibold text-gray-900">
+                        {file.name}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+
+                {/* Action Buttons */}
+                {selectedFile && (
+                  <div className="flex gap-4 mt-auto pb-4">
+                    <Button
+                      variant="outline"
+                      className="flex-1 py-3 text-lg font-semibold border-2 border-gray-900"
+                      onClick={openRenameModal}
+                    >
+                      تغییر نام
+                    </Button>
+                    <Button
+                      className="flex-1 py-3 text-lg font-semibold bg-red-600 text-white hover:bg-red-700"
+                      onClick={handleDeleteFile}
+                    >
+                      حذف
+                    </Button>
+                  </div>
+                )}
+              </>
             )}
           </div>
         )}
@@ -217,6 +259,54 @@ export const Dashboard = () => {
           onChange={(e) => handleFileSelected(e.target.files?.[0])}
         />
       </main>
+
+      {/* Rename Modal */}
+      {renameModalOpen && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center">
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={() => {
+              setRenameModalOpen(false);
+              setNewFileName("");
+            }}
+          />
+          <div className="relative bg-white rounded-3xl p-6 mx-4 max-w-sm w-full shadow-2xl">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2 text-center">
+              تغییر نام
+            </h2>
+            <p className="text-gray-600 text-center mb-4">
+              نام جدید را وارد کنید
+            </p>
+            <input
+              type="text"
+              value={newFileName}
+              onChange={(e) => setNewFileName(e.target.value)}
+              placeholder="نام فایل"
+              className="w-full px-4 py-3 text-lg rounded-2xl border-2 border-gray-200 focus:outline-none focus:border-gray-900 mb-6"
+              autoFocus
+            />
+            <div className="flex gap-4">
+              <Button
+                variant="outline"
+                className="flex-1 py-3 text-lg font-semibold border-2 border-gray-900"
+                onClick={() => {
+                  setRenameModalOpen(false);
+                  setNewFileName("");
+                }}
+              >
+                بازگشت
+              </Button>
+              <Button
+                className="flex-1 py-3 text-lg font-semibold bg-black text-white hover:bg-gray-900"
+                onClick={handleRenameFile}
+                disabled={!newFileName.trim()}
+              >
+                تایید
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

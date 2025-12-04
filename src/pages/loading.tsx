@@ -6,7 +6,12 @@ import barberLottieUrl from "../assets/images/chair.lottie?url";
 export const Loading = () => {
   const navigate = useNavigate();
   const location = useLocation() as {
-    state?: { file?: File; fromHome?: boolean; fromFinalize?: boolean };
+    state?: {
+      file?: File;
+      fromHome?: boolean;
+      fromFinalize?: boolean;
+      fromDashboard?: boolean;
+    };
   };
   const [filledCount, setFilledCount] = useState(0);
 
@@ -29,6 +34,10 @@ export const Loading = () => {
     const timeout = setTimeout(() => {
       if (location.state?.fromHome || location.state?.fromFinalize) {
         navigate("/result");
+      } else if (location.state?.fromDashboard) {
+        navigate("/accsept", {
+          state: { file: location.state?.file, fromDashboard: true },
+        });
       } else {
         navigate("/accsept", { state: { file: location.state?.file } });
       }
@@ -38,6 +47,7 @@ export const Loading = () => {
     location.state?.file,
     location.state?.fromHome,
     location.state?.fromFinalize,
+    location.state?.fromDashboard,
     navigate,
   ]);
 
