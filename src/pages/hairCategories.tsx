@@ -1,4 +1,4 @@
-import { ChevronLeft, RotateCcw } from "lucide-react";
+import { ChevronLeft, LogOut, RotateCcw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export const HairStyleCategories = () => {
@@ -27,9 +27,12 @@ export const HairStyleCategories = () => {
           <ChevronLeft className="w-5 h-5" />
           <span className="text-base font-medium">بازگشت</span>
         </button>
-        <button className="flex bg-white items-center gap-1 text-gray-900 px-2 py-1 rounded-xl">
+        <button
+          onClick={() => navigate("/login")}
+          className="flex bg-white items-center gap-1 text-gray-900 px-2 py-1 rounded-xl"
+        >
           <span className="text-base font-semibold">خروج</span>
-          <RotateCcw className="w-5 h-5" />
+          <LogOut className="w-5 h-5" />
         </button>
       </header>
 

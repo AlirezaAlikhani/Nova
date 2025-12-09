@@ -1,56 +1,45 @@
-import { ChevronLeft, RotateCcw } from "lucide-react";
+import { ChevronLeft, LogOut, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useMemo, useState } from "react";
 
 // Buzz-Cut images
-import buzzCutHighFade1 from "../assets/images/Barbery/Buzz-Cut/high fade.jpg";
-import buzzCutHighFade2 from "../assets/images/Barbery/Buzz-Cut/High-fade.jpg";
-import buzzCutMiddleFade from "../assets/images/Barbery/Buzz-Cut/Middle-fade.jpg";
-import buzzCutMulletFade from "../assets/images/Barbery/Buzz-Cut/mullet-fade.jpg";
-import buzzCutNoFade from "../assets/images/Barbery/Buzz-Cut/no-fade.jpg";
-import buzzCutSkinFade1 from "../assets/images/Barbery/Buzz-Cut/skin fade.jpg";
-import buzzCutSkinFade2 from "../assets/images/Barbery/Buzz-Cut/skin-fade.jpg";
-import buzzCutTaperFade from "../assets/images/Barbery/Buzz-Cut/taper fade.jpg";
+import buzzCutBaldFade from "../assets/images/Barbery/Buzz-Cut/buz-bald-fade.png";
+import buzzCutHighFade1 from "../assets/images/Barbery/Buzz-Cut/buz-high fade 2.png";
+import buzzCutHighFade2 from "../assets/images/Barbery/Buzz-Cut/buz-High fade.png";
+import buzzCutLowFade from "../assets/images/Barbery/Buzz-Cut/buz-low-fade.png";
+import buzzCutMulletFade from "../assets/images/Barbery/Buzz-Cut/buz-mullet-fade.png";
 
 // Side-part images
-import sidePartHighFade from "../assets/images/Barbery/Side-part/high-fade.jpg";
-import sidePartLowFade from "../assets/images/Barbery/Side-part/low-fade.jpeg";
-import sidePartMidFade from "../assets/images/Barbery/Side-part/mid-fade.png";
-import sidePartSkinFade from "../assets/images/Barbery/Side-part/skin fade.jpg";
+import sidePartHighFade from "../assets/images/Barbery/Side-part/SIde-high fade.png";
+import sidePartLowFade from "../assets/images/Barbery/Side-part/Side-low-fade.png";
+import sidePartMidFade from "../assets/images/Barbery/Side-part/Side-mid-fade.png";
+import sidePartSkinFade from "../assets/images/Barbery/Side-part/Side-skin fade.png";
 
 // Mullet images
-import mulletBurstFade1 from "../assets/images/Barbery/Mullet/burst fade.jpg";
-import mulletBurstFade2 from "../assets/images/Barbery/Mullet/burst-fade.jpg";
-import mulletHighTaperFade from "../assets/images/Barbery/Mullet/high taper-fade.jpg";
-import mulletLowTaperFade from "../assets/images/Barbery/Mullet/low taper-fade.jpg";
-import mulletMulletFade1 from "../assets/images/Barbery/Mullet/mullet fade.jpg";
-import mulletMulletFade2 from "../assets/images/Barbery/Mullet/mullet-fade.jpg";
-import mulletSkinFade from "../assets/images/Barbery/Mullet/skin fade.jpg";
+import mulletBurstFade1 from "../assets/images/Barbery/Mullet/Mullet-burst fade.png";
+import mulletBurstFade2 from "../assets/images/Barbery/Mullet/Mullet-burst-fade.png";
+import mulletHighTaperFade from "../assets/images/Barbery/Mullet/Mullet-high taper-fade.png";
+import mulletLowTaperFade from "../assets/images/Barbery/Mullet/Mullet-low taper-fade.png";
+import mulletMulletFade1 from "../assets/images/Barbery/Mullet/Mullet-mullet fade.png";
+import mulletMulletFade2 from "../assets/images/Barbery/Mullet/Mullet-mullet-fade 2.png";
 
 // Curly images
-import curlyBurstFade from "../assets/images/Barbery/Curly/Busrt-fade.jpg";
-import curlyLowFade from "../assets/images/Barbery/Curly/low fade.jpg";
-import curlyMidFade from "../assets/images/Barbery/Curly/mid-fade.jpg";
-import curlyMulletFade from "../assets/images/Barbery/Curly/mullet-fade.jpg";
-import curlySkinFade from "../assets/images/Barbery/Curly/skin-fade.jpg";
-import curlyTaperFade1 from "../assets/images/Barbery/Curly/taper fade.jpg";
-import curlyTaperFade2 from "../assets/images/Barbery/Curly/taper-fade.jpg";
+import curlyBurstFade from "../assets/images/Barbery/Curly/Curly-Busrt-fade.png";
+import curlyLowFade from "../assets/images/Barbery/Curly/Curly-low fade.png";
+import curlyMidFade from "../assets/images/Barbery/Curly/Curly-mid-fade.png";
+import curlyMulletFade from "../assets/images/Barbery/Curly/Curly-mullet-fade.png";
+import curlyTaperFade1 from "../assets/images/Barbery/Curly/Curly-taper fade.png";
+import curlyTaperFade2 from "../assets/images/Barbery/Curly/Curly-taper-fade.png";
 
-// Spiky images
-import spikyBaldFade from "../assets/images/Barbery/Spiky/bald-fade.jpg";
-import spikyHighFade from "../assets/images/Barbery/Spiky/high-fade.jpg";
-import spikyLowFade from "../assets/images/Barbery/Spiky/low fade.jpg";
-import spikyMidFade1 from "../assets/images/Barbery/Spiky/mid fade.jpg";
-import spikyMidFade2 from "../assets/images/Barbery/Spiky/mid-fade.jpg";
+// Spiky images - currently no images available
 
 // Pompadour images
-import pompadourClassicFade from "../assets/images/Barbery/Pompadour/classic fade.jpg";
-import pompadourHighFade from "../assets/images/Barbery/Pompadour/High-fade.jpg";
-import pompadourLowFade from "../assets/images/Barbery/Pompadour/low fade.jpg";
-import pompadourMidFade from "../assets/images/Barbery/Pompadour/mid fade.jpg";
-import pompadourMulletFade from "../assets/images/Barbery/Pompadour/mullet fade.jpg";
-import pompadourTaperFade from "../assets/images/Barbery/Pompadour/taper fade.jpg";
+import pompadourClassicFade from "../assets/images/Barbery/Pompadour/Pompadour-classic fade.png";
+import pompadourHighFade from "../assets/images/Barbery/Pompadour/Pompadour-High-fade.png";
+import pompadourLowFade from "../assets/images/Barbery/Pompadour/Pompadour-low fade.png";
+import pompadourMulletFade from "../assets/images/Barbery/Pompadour/Pompadour-mullet fade 2.png";
+import pompadourTaperFade from "../assets/images/Barbery/Pompadour/Pompadour-taper fade.png";
 
 export const HairStyleDetails = () => {
   const navigate = useNavigate();
@@ -66,14 +55,11 @@ export const HairStyleDetails = () => {
       { id: number; name: string; image: string }[]
     > = {
       بازکات: [
-        { id: 1, name: "High Fade", image: buzzCutHighFade1 },
-        { id: 2, name: "High Fade", image: buzzCutHighFade2 },
-        { id: 3, name: "Middle Fade", image: buzzCutMiddleFade },
-        { id: 4, name: "Mullet Fade", image: buzzCutMulletFade },
-        { id: 5, name: "No Fade", image: buzzCutNoFade },
-        { id: 6, name: "Skin Fade", image: buzzCutSkinFade1 },
-        { id: 7, name: "Skin Fade", image: buzzCutSkinFade2 },
-        { id: 8, name: "Taper Fade", image: buzzCutTaperFade },
+        { id: 1, name: "Bald Fade", image: buzzCutBaldFade },
+        { id: 2, name: "High Fade", image: buzzCutHighFade1 },
+        { id: 3, name: "High Fade", image: buzzCutHighFade2 },
+        { id: 4, name: "Low Fade", image: buzzCutLowFade },
+        { id: 5, name: "Mullet Fade", image: buzzCutMulletFade },
       ],
       "ساید پارت": [
         { id: 1, name: "High Fade", image: sidePartHighFade },
@@ -88,31 +74,24 @@ export const HairStyleDetails = () => {
         { id: 4, name: "Low Taper Fade", image: mulletLowTaperFade },
         { id: 5, name: "Mullet Fade", image: mulletMulletFade1 },
         { id: 6, name: "Mullet Fade", image: mulletMulletFade2 },
-        { id: 7, name: "Skin Fade", image: mulletSkinFade },
       ],
       فر: [
         { id: 1, name: "Burst Fade", image: curlyBurstFade },
         { id: 2, name: "Low Fade", image: curlyLowFade },
         { id: 3, name: "Mid Fade", image: curlyMidFade },
         { id: 4, name: "Mullet Fade", image: curlyMulletFade },
-        { id: 5, name: "Skin Fade", image: curlySkinFade },
-        { id: 6, name: "Taper Fade", image: curlyTaperFade1 },
-        { id: 7, name: "Taper Fade", image: curlyTaperFade2 },
+        { id: 5, name: "Taper Fade", image: curlyTaperFade1 },
+        { id: 6, name: "Taper Fade", image: curlyTaperFade2 },
       ],
       اسپایکی: [
-        { id: 1, name: "Bald Fade", image: spikyBaldFade },
-        { id: 2, name: "High Fade", image: spikyHighFade },
-        { id: 3, name: "Low Fade", image: spikyLowFade },
-        { id: 4, name: "Mid Fade", image: spikyMidFade1 },
-        { id: 5, name: "Mid Fade", image: spikyMidFade2 },
+        // No images available for Spiky category
       ],
       پامپادور: [
         { id: 1, name: "Classic Fade", image: pompadourClassicFade },
         { id: 2, name: "High Fade", image: pompadourHighFade },
         { id: 3, name: "Low Fade", image: pompadourLowFade },
-        { id: 4, name: "Mid Fade", image: pompadourMidFade },
-        { id: 5, name: "Mullet Fade", image: pompadourMulletFade },
-        { id: 6, name: "Taper Fade", image: pompadourTaperFade },
+        { id: 4, name: "Mullet Fade", image: pompadourMulletFade },
+        { id: 5, name: "Taper Fade", image: pompadourTaperFade },
       ],
     };
     return mapping[categoryName] || [];
@@ -134,9 +113,12 @@ export const HairStyleDetails = () => {
           <ChevronLeft className="w-5 h-5" />
           <span className="text-base font-medium">بازگشت</span>
         </button>
-        <button className="flex bg-white items-center gap-1 text-gray-900 px-2 py-1 rounded-xl">
+        <button
+          onClick={() => navigate("/login")}
+          className="flex bg-white items-center gap-1 text-gray-900 px-2 py-1 rounded-xl"
+        >
           <span className="text-base font-semibold">خروج</span>
-          <RotateCcw className="w-5 h-5" />
+          <LogOut className="w-5 h-5" />
         </button>
       </header>
 

@@ -122,7 +122,7 @@ export const HomeScreen = () => {
             menuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="bg-gradient-to-br from-[#000000] via-[#160628] to-[#000000] text-white p-4 relative">
+          <div className="bg-gradient-to-br from-[#000000] via-[#160628] to-[#000000] text-white p-4 relative border-t border-white/20">
             <div className="flex items-center justify-between text-sm">
               <div>
                 <div className="absolute top-6 left-6">
@@ -146,7 +146,7 @@ export const HomeScreen = () => {
             </div>
           </div>
 
-          <div className="flex flex-col flex-1 px-6 py-6 gap-1">
+          <div className="flex flex-col flex-1 px-2 py-6 gap-1">
             <button className="flex bg-black items-center justify-between py-4 text-lg font-semibold text-white hover:bg-gray-900 transition-colors">
               <div className="flex items-center gap-3">
                 <MessageCircle className="w-5 h-5" />

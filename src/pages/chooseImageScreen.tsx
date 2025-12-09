@@ -1,4 +1,4 @@
-import { ChevronRight, Camera, Image } from "lucide-react";
+import { ChevronRight, Camera, Image, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
@@ -29,11 +29,14 @@ export const ChooseImageScreen = () => {
       className="bg-white h-[100dvh] flex flex-col font-sans overflow-hidden fixed inset-0"
     >
       {/* Header: Back + Title */}
-      <header className="flex items-center justify-end px-4 pt-3 pb-2">
-        {/* <div className="flex-1 text-center pr-8">
-          <ChevronRight className="inline w-4 h-4 text-red-500 -rotate-90 mx-1" />
-          <span className="text-sm text-red-500 font-medium">فرستادن عکس</span>
-        </div> */}
+      <header className="flex items-center justify-between px-4 pt-3 pb-2">
+        <button
+          onClick={() => navigate("/login")}
+          className="flex items-center bg-white gap-1 text-gray-900 px-2 py-1 rounded-xl"
+        >
+          <span className="text-sm sm:text-base font-semibold">خروج</span>
+          <LogOut className="w-4 h-4 sm:w-5 sm:h-5" />
+        </button>
         <Button
           variant="ghost"
           className="flex items-center text-black bg-white gap-1 text-lg font-semibold"

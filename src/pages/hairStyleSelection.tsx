@@ -1,4 +1,11 @@
-import { ChevronLeft, Upload, RotateCcw, Camera, Image } from "lucide-react";
+import {
+  ChevronLeft,
+  Upload,
+  RotateCcw,
+  Camera,
+  Image,
+  LogOut,
+} from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useMemo, useState, useRef } from "react";
@@ -106,9 +113,12 @@ export const HairStyleSelection = () => {
           <ChevronLeft className="w-5 h-5" />
           <span className="text-base font-medium">بازگشت</span>
         </button>
-        <button className="flex bg-white items-center gap-1 text-gray-900 px-2 py-1 rounded-xl">
+        <button
+          onClick={() => navigate("/login")}
+          className="flex bg-white items-center gap-1 text-gray-900 px-2 py-1 rounded-xl"
+        >
           <span className="text-base font-semibold">خروج</span>
-          <RotateCcw className="w-5 h-5" />
+          <LogOut className="w-5 h-5" />
         </button>
       </header>
       {/* Main */}

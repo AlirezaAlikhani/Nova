@@ -1,5 +1,5 @@
 import LoggingImage from "../assets/images/carchter.png";
-import { Camera, Image } from "lucide-react";
+import { Camera, ChevronLeft, Image, LogOut } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/Button";
@@ -125,10 +125,33 @@ export const Accsept = () => {
 
   return (
     <div
-      dir="rtl"
-      className="bg-white h-[100dvh] flex flex-col justify-center items-center font-sans overflow-hidden fixed inset-0 px-6"
+      dir="ltr"
+      className="bg-white h-[100dvh] flex flex-col font-sans overflow-hidden fixed inset-0 px-4 sm:px-6"
     >
-      <main className="flex flex-col items-center justify-center space-y-8 w-full max-w-sm">
+      {/* Header */}
+      <header className="flex items-center justify-between py-3 sm:py-4 flex-shrink-0">
+        <button
+          onClick={() => {
+            if (fromDashboard) {
+              navigate("/dashboard");
+            } else {
+              navigate(-1);
+            }
+          }}
+          className="flex items-center bg-white gap-1 text-gray-900 px-2 py-1 rounded-xl"
+        >
+          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+          <span className="text-sm sm:text-base font-medium">بازگشت</span>
+        </button>
+        <button
+          onClick={() => navigate("/login")}
+          className="flex bg-white items-center gap-1 text-gray-900 px-2 py-1 rounded-xl"
+        >
+          <span className="text-sm sm:text-base font-semibold">خروج</span>
+          <LogOut className="w-4 h-4 sm:w-5 sm:h-5" />
+        </button>
+      </header>
+      <main className="flex flex-col items-center justify-center space-y-6 sm:space-y-8 w-full max-w-sm mx-auto flex-1">
         {/* Illustration + Text */}
         <div className="flex flex-col items-center text-center">
           <img
@@ -157,7 +180,7 @@ export const Accsept = () => {
               type="text"
               value={fileName}
               onChange={(e) => setFileName(e.target.value)}
-              placeholder="نام یا عدد وارد کنید ..."
+              placeholder="...نام یا عدد وارد کنید"
               className="w-full px-4 py-4 bg-gray-100 text-lg placeholder:text-gray-500 font-bold rounded-full border-2 border-gray-200  text-center"
             />
           </div>
