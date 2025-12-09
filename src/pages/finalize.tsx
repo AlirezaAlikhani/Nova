@@ -1,6 +1,5 @@
 import {
   ChevronLeft,
-  RotateCcw,
   ArrowRight,
   Scissors,
   Camera,

@@ -1,4 +1,4 @@
-import { ChevronLeft, LogOut, RotateCcw } from "lucide-react";
+import { ChevronLeft, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useMemo, useState } from "react";

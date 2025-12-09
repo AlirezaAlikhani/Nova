@@ -1,11 +1,4 @@
-import {
-  ChevronLeft,
-  Upload,
-  RotateCcw,
-  Camera,
-  Image,
-  LogOut,
-} from "lucide-react";
+import { ChevronLeft, Upload, Camera, Image, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useMemo, useState, useRef } from "react";
