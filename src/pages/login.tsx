@@ -39,7 +39,7 @@ export const LoginScreen = () => {
               value={account}
               onChange={(e) => setAccount(e.target.value)}
               placeholder="09XXXXXXXXX"
-              className="w-full h-14 px-4 py-3 text-black text-base bg-gray-100 rounded-3xl focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all placeholder-gray-400"
+              className="w-full h-14 px-4 py-3 text-black text-base bg-white border-2 border-gray-400 rounded-3xl focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all placeholder-gray-400"
               style={{ direction: "ltr" }}
             />
           </div>
@@ -54,7 +54,7 @@ export const LoginScreen = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              className="w-full h-14 px-4 py-3 text-black text-base bg-gray-100 rounded-3xl focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all placeholder-gray-400"
+              className="w-full h-14 px-4 py-3 text-black text-base bg-white border-2 border-gray-400 rounded-3xl focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all placeholder-gray-400"
               style={{ direction: "ltr" }}
             />
           </div>
