@@ -1,5 +1,5 @@
 import LoggingImage from "../assets/images/carchter.png";
-import { Camera, ChevronLeft, Image, LogOut } from "lucide-react";
+import { Camera, Image } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/Button";
@@ -50,7 +50,9 @@ export const Accsept = () => {
   const handleFileSelected = (file?: File | null) => {
     if (!file) return;
     setDrawerOpen(false);
-    navigate("/loading", { state: { file, fromDashboard: true } });
+    navigate("/loading", {
+      state: { file, fromDashboard: fromDashboard || false },
+    });
   };
 
   const compressImage = (
@@ -129,28 +131,6 @@ export const Accsept = () => {
       className="bg-white h-[100dvh] flex flex-col font-sans overflow-hidden fixed inset-0 px-4 sm:px-6"
     >
       {/* Header */}
-      <header className="flex items-center justify-between py-3 sm:py-4 flex-shrink-0">
-        <button
-          onClick={() => {
-            if (fromDashboard) {
-              navigate("/dashboard");
-            } else {
-              navigate(-1);
-            }
-          }}
-          className="flex items-center bg-white gap-1 text-gray-900 px-2 py-1 rounded-xl"
-        >
-          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-          <span className="text-sm sm:text-base font-medium">بازگشت</span>
-        </button>
-        <button
-          onClick={() => navigate("/login")}
-          className="flex bg-white items-center gap-1 text-gray-900 px-2 py-1 rounded-xl"
-        >
-          <span className="text-sm sm:text-base font-semibold">خروج</span>
-          <LogOut className="w-4 h-4 sm:w-5 sm:h-5" />
-        </button>
-      </header>
       <main className="flex flex-col items-center justify-center space-y-6 sm:space-y-8 w-full max-w-sm mx-auto flex-1">
         {/* Illustration + Text */}
         <div className="flex flex-col items-center text-center">
@@ -160,7 +140,7 @@ export const Accsept = () => {
             className="w-[200px] h-[254px] object-cover rounded-xl mb-4"
           />
 
-          <h1 className="text-2xl font-bold text-gray-900">عکس دریافت شد!</h1>
+          <h1 className="text-2xl font-bold text-gray-900"> !عکس دریافت شد</h1>
 
           {fromDashboard ? (
             <p className="text-sm text-gray-500 mt-2 leading-relaxed">
